@@ -249,12 +249,18 @@ section {
   font-size: 16px;
   text-transform: capitalize;
   font-weight: 500;
+  transition: all 0.42s ease;
 }
 
 .price p {
   color: #151515;
   font-size: 14px;
   font-weight: 600;
+  transition: all 0.42s ease;
+}
+
+.price:hover h4, .price:hover p {
+  color: #0085bd;
 }
 
 .add-to-cart-button-container button {

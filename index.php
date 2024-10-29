@@ -107,9 +107,11 @@
 
         <div class="products">
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets\images\airpods_pro_2nd_generation.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets\images\airpods_pro_2nd_generation.jpg" alt="gambar-produk-1">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -125,10 +127,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Apple Airpods Pro 2nd Generation</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Apple Airpods Pro 2nd Generation</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -137,9 +141,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/anker_soundcore_p20i_tws.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/anker_soundcore_p20i_tws.jpg" alt="gambar-produk-2">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -155,10 +161,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>TWS Anker Soundcore P20i</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>TWS Anker Soundcore P20i</h4>
+                        <p>Rp172.000</p>
+                    </div>           
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -167,9 +175,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/autofull_gaming_chair_brown.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/autofull_gaming_chair_brown.jpg" alt="gambar-produk-3">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -185,10 +195,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Kursi Gaming Autofull Coklat</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Kursi Gaming Autofull Coklat</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -197,9 +209,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/blackshark_v2x_headset.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/blackshark_v2x_headset.jpg" alt="gambar-produk-4">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -215,10 +229,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Razer BlackShark V2X Gaming Headset</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Razer BlackShark V2X Gaming Headset</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -227,9 +243,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/dowinx_gaming_chair_fabric.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/dowinx_gaming_chair_fabric.jpg" alt="gambar-produk-5">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -245,10 +263,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Kursi Gaming Dowinx Kain</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Kursi Gaming Dowinx Kain</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -257,9 +277,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/dumter_3in1.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/dumter_3in1.jpg" alt="gambar-produk-6">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -275,10 +297,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>DumTer 3-in-1 Toolkit</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>DumTer 3-in-1 Toolkit</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -287,9 +311,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/gtracing_gaming_chair.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/gtracing_gaming_chair.jpg" alt="gambar-produk-7">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -305,10 +331,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Kursi Gaming GTRacing</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Kursi Gaming GTRacing</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -317,9 +345,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/iphone_11.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/iphone_11.jpg" alt="gambar-produk-8">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -335,10 +365,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Apple iPhone 11</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Apple iPhone 11</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -347,9 +379,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/iphonexr.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/iphonexr.jpg" alt="gambar-produk-9">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -365,10 +399,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Apple iPhone XR</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Apple iPhone XR</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -377,9 +413,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/kensington_blackbelt_rugged_case.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/kensington_blackbelt_rugged_case.jpg" alt="gambar-produk-10">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -395,10 +433,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Kensington Blackbelt Rugged Case</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Kensington Blackbelt Rugged Case</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -407,9 +447,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/keyboardgaming.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/keyboardgaming.jpg" alt="gambar-produk-11">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -425,10 +467,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Keyboard Gaming Ambatukam</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Keyboard Gaming Ambatukam</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -437,9 +481,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/oneplus_10_pro.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/oneplus_10_pro.jpg" alt="gambar-produk-12">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -455,10 +501,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>OnePlus 10 Pro</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>OnePlus 10 Pro</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -467,9 +515,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/oneplus_12R.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/oneplus_12R.jpg" alt="gambar-produk-13">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -485,10 +535,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>OnePlus 12R</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>OnePlus 12R</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -497,9 +549,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/redragonm612.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/redragonm612.jpg" alt="gambar-produk-14">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -515,10 +569,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Mouse Gaming Redragon M612</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Mouse Gaming Redragon M612</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -527,9 +583,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/respawn_900_gaming_recliner.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/respawn_900_gaming_recliner.jpg" alt="gambar-produk-15">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -545,10 +603,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Respawn 900 Gaming Recliner</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Respawn 900 Gaming Recliner</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -557,9 +617,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/samsung_galaxy_s24.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/samsung_galaxy_s24.jpg" alt="gambar-produk-16">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -575,10 +637,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Samsung Galaxy S24</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Samsung Galaxy S24</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -587,9 +651,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/tws_jbl_vibe_beam.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/tws_jbl_vibe_beam.jpg" alt="gambar-produk-17">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -605,10 +671,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>TWS JBL Vibe Beam</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>TWS JBL Vibe Beam</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -617,9 +685,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/xiaomi_poco_x6_pro.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/xiaomi_poco_x6_pro.jpg" alt="gambar-produk-18">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -635,10 +705,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Xiaomi Poco X6 Pro</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Xiaomi Poco X6 Pro</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -647,9 +719,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/netgear_orbi970_.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/netgear_orbi970_.jpg" alt="gambar-produk-19">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -665,10 +739,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Netgear Orbi 970 Mesh WiFi System</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Netgear Orbi 970 Mesh WiFi System</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -677,9 +753,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/samsung_viewfinity_s5_.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/samsung_viewfinity_s5_.jpg" alt="gambar-produk-20">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -695,10 +773,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>TV Samsung ViewFinity S5</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>TV Samsung ViewFinity S5</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
@@ -707,9 +787,11 @@
             </div>
 
             <div class="row">
-                <div class="product-listing-image-container">
-                    <img src="assets/images/samsung_galaxy_a15_.jpg" alt="gambar-produk-1">
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="product-listing-image-container">
+                        <img src="assets/images/samsung_galaxy_a15_.jpg" alt="gambar-produk-21">
+                    </div>
+                </a>
                 <div class="product-text">
                     <h5>For Sale</h5>
                 </div>
@@ -725,10 +807,12 @@
                     <i class="bx bxs-star"></i>
                     <i class="bx bxs-star-half"></i>
                 </div>
-                <div class="price">
-                    <h4>Samsung Galaxy A15</h4>
-                    <p>Rp172.000</p>
-                </div>
+                <a href="product_details.php" class="product-details-link">
+                    <div class="price">
+                        <h4>Samsung Galaxy A15</h4>
+                        <p>Rp172.000</p>
+                    </div>
+                </a>
                 <div class="add-to-cart-button-container">
                     <button type="submit" class="add-to-cart-btn">
                         Masukkan Ke Keranjang
