@@ -1,0 +1,113 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.top-bar {
+  width: 100%;
+  flex-direction: row;
+  background-color: #cdc2a5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  /* background-color: greenyellow; */
+  width: 50px;
+  height: 50px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 50px;
+}
+
+.brand {
+  /* background-color: greenyellow; */
+  width: 235px;
+  height: 42px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+}
+
+.search-box {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 250px; */
+  width: 300px;
+  max-width: 250px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 7px;
+  border-radius: 40px;
+  /* background-color: green; */
+  border: none;
+  padding-left: 35px;
+  position: absolute;
+}
+
+.search-box button {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  border-radius: 100px;
+  margin-top: 3px;
+  margin-bottom: auto;
+  margin-left: -180px;
+  padding-top: 1px;
+  padding-left: 2px;
+  padding-bottom: 1px;
+  padding-right: 2px;
+}
+
+.regist-login-btn {
+  display: flex;
+  flex-direction: row;
+  margin-right: 50px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.regist-login-btn button {
+  outline: none;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mid-bar {
+  background-color: #295f98;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  padding-top: 100px;
+}
+
+.news{
+    width: 700px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.news img {
+  width: 700px;
+  display: flex;
+  padding-top: 20px;
+  background-color: white;
+}
