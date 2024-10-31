@@ -3,8 +3,8 @@
     include "database/connect.php";
     session_start();
     $search_input = "";
-    if (isset($_SESSION['name'])) {
-        $name = $_SESSION['name'];
+    if (isset($_SESSION['userId'])) {
+        $name = $_SESSION['userId'];
     }
     if (isset($_POST["products-search-input"])) {
         $search_input = $_POST["products-search-input"];
@@ -61,7 +61,7 @@
                 </a>
             </li>-->
             <li class="sellerpageNavButton">
-                <a href="<?php if (!isset($_SESSION['name'])) {echo "login.php";} else {echo "seller.php";} ?>">
+                <a href="<?php if (!isset($_SESSION['userId'])) {echo "login.php";} else {echo "seller.php";} ?>">
                     Penjual
                 </a>
             </li>
@@ -80,12 +80,12 @@
                     </button>
                 </form>
             </div>
-            <a href="<?php if (!isset($_SESSION['name'])) {echo "login.php";} else {echo "cart.php";}?>" class="cartNavigation">
+            <a href="<?php if (!isset($_SESSION['userId'])) {echo "login.php";} else {echo "cart.php";}?>" class="cartNavigation">
                 <i class="bx bx-cart">
 
                 </i>
             </a>
-            <?php if (!isset($_SESSION['name'])) { ?>
+            <?php if (!isset($_SESSION['userId'])) { ?>
                 <a href="login.php" class="loginNavigation">
                     <p class="loginNavigation">Login</p>
                 </a>
@@ -107,7 +107,7 @@
     </header>
     <section class="all-products" id="allproducts">
         <div class="center-text">
-            <h2 <?php if (!isset($_SESSION['name'])) {echo 'style="margin-top: 30px;"';}?>>
+            <h2 <?php if (!isset($_SESSION['userId'])) {echo 'style="margin-top: 30px;"';}?>>
                 <?php if (!empty($search_input)) {echo "Hasil Pencarian Produk Untuk ";} else {echo "Semua ";}?>
                 <span>
                     <?php if (!empty($search_input)) {?>

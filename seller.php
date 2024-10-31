@@ -1,5 +1,17 @@
 <?php
-
+    include "database/database.php";
+    include "database/connect.php";
+    session_start();
+    if (isset($_SESSION['userId'])) {
+        $userId = $_SESSION['userId'];
+        $userDetails = get_user_details($conn, $userId);
+        if ($userDetails['idRole'] != 1) {
+            header("Location: aktivasiFiturPenjual.php");
+        }
+    }
+    else {
+        header("Location: login.php");
+    }
 ?>
 
 <!DOCTYPE html>

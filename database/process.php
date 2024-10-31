@@ -95,9 +95,11 @@
                 if($row != NULL){
                     $nama = $row['username'];
                     $password = $row['password'];
+                    $userId = $row['idUser'];
 
                     if($name == $nama && $pass == $password){
                         $_SESSION['name'] = $name;
+                        $_SESSION['userId'] = $userId;
                         header('Location: ../index.php');
                     } else {
                         header('Location: ../login.php');

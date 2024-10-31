@@ -2,8 +2,8 @@
     include "database/database.php";
     include "database/connect.php";
     session_start();
-    if (isset($_SESSION['name'])) {
-        $name = $_SESSION['name'];
+    if (isset($_SESSION['userId'])) {
+        $name = $_SESSION['userId'];
     }
 ?>
 
@@ -62,7 +62,7 @@
                 </a>
             </li>-->
             <li class="sellerpageNavButton">
-                <a href="<?php if (!isset($_SESSION['name'])) {
+                <a href="<?php if (!isset($_SESSION['userId'])) {
                     echo "login.php";
                 } else {
                     echo "seller.php";
@@ -85,7 +85,7 @@
                     </button>
                 </form>
             </div>
-            <a href="<?php if (!isset($_SESSION['name'])) {
+            <a href="<?php if (!isset($_SESSION['userId'])) {
                 echo "login.php";
             } else {
                 echo "cart.php";
@@ -95,7 +95,7 @@
 
                 </i>
             </a>
-            <?php if (!isset($_SESSION['name'])) { ?>
+            <?php if (!isset($_SESSION['userId'])) { ?>
                 <a href="login.php" class="loginNavigation">
                     <p class="loginNavigation">Login</p>
                 </a>

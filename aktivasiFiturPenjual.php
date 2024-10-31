@@ -1,8 +1,12 @@
 <?php
-    session_start();
     include "database/database.php";
     include "database/connect.php";
-    $name = $_SESSION['userId'];
+    session_start();
+    if (isset($_SESSION['userId'])) {
+        $userId = $_SESSION['userId'];
+    } else {
+        header("Location: login.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -11,9 +15,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sign in to your very own ShopEasily™ account.">
-    <title>Insert Produk</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/login.css" />
+    <meta name="description" content="Create your own ShopEasily™ Seller Account">
+    <title>ShopEasily™ - Activate Seller Feature</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/aktivasiFiturPenjual.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
@@ -36,18 +40,16 @@
     </nav>
     <div class="web-body">
         <div class="login-box">
-            <h2>Insert Produk</h2>
+            <h2>Aktivasi Penjual</h2>
             <hr style="width: 100%;size: 0.5; color: #e1d7c6" noshade>
-            <form action="database/funcproduk.php" method="post" class="login" enctype="multipart/form-data">
-                <input type="hidden" class="namapenjual" name="namapenjual" value="<?php echo $name?>" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                <input type="hidden" class="condition" name="condition" value="insert" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                <input type="text" class="username" name="namaproduk" placeholder="Nama Produk" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                <input type="text" class="username" name="descproduk" placeholder="Deskripsi Produk" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                <input type="number" class="username" name="hargaproduk" placeholder="Harga Produk" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                <input type="number" class="username" name="qtyproduk" placeholder="Qty Produk" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                <input type="file" class="username" name="fotoproduk" placeholder="Foto Produk" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                <button type="submit" class="submit-btn">Insert</button>
+            <form action="process.php" class="login" method="POST">
+                <input type="hidden" class="condition" id="account_username" name="condition" value="aktivasi" autocorrect="off" autocapitalize="off" autocomplete="off" required>
+                <input type="hidden" class="username" id="account_username" name="name" value="<?php echo $name; ?>" autocorrect="off" autocapitalize="off" autocomplete="off" required>
+                <input type="text" class="toko" id="account_username" name="toko" placeholder="Nama Toko" autocorrect="off" autocapitalize="off" autocomplete="off" required>
+                <input type="password" class="password" id="account_password" name="pass" placeholder="Kata Sandi" autocorrect="off" autocapitalize="off" autocomplete="off" required>
+                <button type="submit" class="submit-btn">Bergabung</button>
             </form>
+            <a href="#"><p>Lupa Password</p></a>
         </div>
         <div class="footer">
             <h4>Copyright @ Kelompok 1 2024</h4>

@@ -3,8 +3,8 @@
     include "database/database.php";
     include "database/connect.php";
     $data = all_table($conn, "produk");
-    if (isset($_SESSION['name'])) {
-        $name = $_SESSION['name'];
+    if (isset($_SESSION['userId'])) {
+        $name = $_SESSION['userId'];
     }
 ?>
 
@@ -57,7 +57,7 @@
                 </a>
             </li>-->
             <li class="sellerpageNavButton">
-                <a href="<?php if (!isset($_SESSION['name'])) {echo "login.php";} else {echo "seller.php";} ?>">
+                <a href="<?php if (!isset($_SESSION['userId'])) {echo "login.php";} else {echo "seller.php";} ?>">
                     Penjual
                 </a>
             </li>
@@ -76,12 +76,12 @@
                     </button>
                 </form>
             </div>
-            <a href="<?php if (!isset($_SESSION['name'])) {echo "login.php";} else {echo "cart.php";}?>" class="cartNavigation">
+            <a href="<?php if (!isset($_SESSION['userId'])) {echo "login.php";} else {echo "cart.php";}?>" class="cartNavigation">
                 <i class="bx bx-cart">
 
                 </i>
             </a>
-            <?php if (!isset($_SESSION['name'])) { ?>
+            <?php if (!isset($_SESSION['userId'])) { ?>
                 <a href="login.php" class="loginNavigation">
                     <p class="loginNavigation">Login</p>
                 </a>

@@ -83,4 +83,17 @@
             return [];
         }
     }
+
+    function get_user_details($conn, $userId) {
+        $sql = "SELECT * FROM user WHERE idUser = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result && $result->num_rows > 0) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } else {
+            return [];
+        }
+    }
 ?>

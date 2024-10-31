@@ -2,8 +2,8 @@
     session_start();
     include "database/database.php";
     include "database/connect.php";
-    if (isset($_SESSION['name'])) {
-        $name = $_SESSION['name'];
+    if (isset($_SESSION['userId'])) {
+        $name = $_SESSION['userId'];
     }
     $data = all_table($conn, "produk"); //get all rows and columns from the produk table (associative array)
     $categoriesUniqueColumnData = get_unique_column($conn, "produk", "kategoriProduk"); //(one-dimensional array)
@@ -58,7 +58,7 @@
                 </a>
             </li>-->
             <li class="sellerpageNavButton">
-                <a href="<?php if (!isset($_SESSION['name'])) {echo "login.php";} else {echo "seller.php";} ?>">
+                <a href="<?php if (!isset($_SESSION['userId'])) {echo "login.php";} else {echo "seller.php";} ?>">
                     Penjual
                 </a>
             </li>
@@ -77,12 +77,12 @@
                     </button>
                 </form>
             </div>
-            <a href="<?php if (!isset($_SESSION['name'])) {echo "login.php";} else {echo "cart.php";}?>" class="cartNavigation">
+            <a href="<?php if (!isset($_SESSION['userId'])) {echo "login.php";} else {echo "cart.php";}?>" class="cartNavigation">
                 <i class="bx bx-cart">
 
                 </i>
             </a>
-            <?php if (!isset($_SESSION['name'])) { ?>
+            <?php if (!isset($_SESSION['userId'])) { ?>
                 <a href="login.php" class="loginNavigation">
                     <p class="loginNavigation">Login</p>
                 </a>
@@ -104,7 +104,7 @@
     </header>
     <section class="all-products" id="allproducts">
         <div class="center-text">
-            <h2 <?php if (!isset($_SESSION['name'])) {echo 'style="margin-top: -25px;"';} ?>>Semua <span>Produk</span></h2>
+            <h2 <?php if (!isset($_SESSION['userId'])) {echo 'style="margin-top: -25px;"';} ?>>Semua <span>Produk</span></h2>
             <?php foreach ($categoriesUniqueColumnData as $category) { ?>
                 <a href="#<?php echo strtolower($category); ?>-products" class="category-section-links">
                     <?php echo htmlspecialchars($category, ENT_QUOTES, 'UTF-8'); ?>
