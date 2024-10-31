@@ -56,6 +56,19 @@
         }
     }
 
+    function get_products_by_shopname($conn, $shop_name) {
+        $sql = "SELECT * FROM produk WHERE namaPenjual = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $shop_name);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result && $result->num_rows > 0) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } else {
+            return [];
+        }
+    }
+
     function get_cart_details($conn, $userId){
         $sql = "
             SELECT user.*, produk.*, keranjang.*

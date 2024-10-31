@@ -2,7 +2,9 @@
     session_start();
     include "database/database.php";
     include "database/connect.php";
-    $name = $_SESSION['userId'];
+    $userId = $_SESSION['userId'];
+    $userDetails = get_user_details($conn, $userId);
+    $shop_name = $userDetails["namaToko"];
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +41,7 @@
             <h2>Insert Produk</h2>
             <hr style="width: 100%;size: 0.5; color: #e1d7c6" noshade>
             <form action="database/funcproduk.php" method="post" class="login" enctype="multipart/form-data">
-                <input type="hidden" class="namapenjual" name="namapenjual" value="<?php echo $name?>" autocorrect="off" autocapitalize="off" autocomplete="off" required>
+                <input type="hidden" class="namapenjual" name="namapenjual" value="<?php echo $shop_name?>" autocorrect="off" autocapitalize="off" autocomplete="off" required>
                 <input type="hidden" class="condition" name="condition" value="insert" autocorrect="off" autocapitalize="off" autocomplete="off" required>
                 <input type="text" class="username" name="namaproduk" placeholder="Nama Produk" autocorrect="off" autocapitalize="off" autocomplete="off" required>
                 <input type="text" class="username" name="descproduk" placeholder="Deskripsi Produk" autocorrect="off" autocapitalize="off" autocomplete="off" required>

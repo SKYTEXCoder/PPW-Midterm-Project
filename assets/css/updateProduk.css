@@ -13,6 +13,16 @@
   text-decoration: none;
 }
 
+a {
+  color: #111;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.needhelp {
+  font-weight: 500;
+}
+
 header {
   position: fixed;
   width: 100%;
@@ -117,7 +127,7 @@ header {
   cursor: pointer;
 }
 
-.sellerpageNavButton a {
+.homeNavButton a {
   color: #0085bd;
 }
 
@@ -152,17 +162,17 @@ header {
   height: 3px;
   width: 23%;
   background: #0085bd;
-  left: 73%;
+  left: 6%;
   bottom: -2px;
   transition: all 0.3s ease;
 }
 
-.header .navmenu li:nth-child(1):hover ~ .active-tab-indicator-line {
-  left: 6%;
-}
-
 .header .navmenu li:nth-child(2):hover ~ .active-tab-indicator-line {
   left: 40%;
+}
+
+.header .navmenu li:nth-child(3):hover ~ .active-tab-indicator-line {
+  left: 73%;
 }
 
 p.loginNavigation {
@@ -178,221 +188,79 @@ a.registerNavigation:hover {
   color: #0085bd;
 }
 
-section {
+section.contact {
   padding: 5% 5%;
 }
 
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, auto));
-  gap: 2rem;
+.main-content {
+  padding: 100px 10%; /* Adjusted for header spacing */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.row {
-  position: relative;
-  transition: all 0.4s;
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.product-listing-image-container {
-  width: 200px;
-  height: 200px;
-  transition: all 0.4s;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.product-listing-image-container img {
-  /*width: 100%;
-        height: 100%;*/
-  max-width: 200px;
-  max-height: 200px;
-  object-fit: cover;
-}
-
-.product-listing-image-container:hover {
-  transform: scale(0.85);
-}
-
-.product-text h5 {
-  position: absolute;
-  top: 13px;
-  left: 13px;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  background-color: #2e9f3b;
-  padding: 3px 10px;
-  border-radius: 3px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.heart-icon {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  font-size: 22px;
-  cursor: pointer;
-  color: #999;
-  transition: color 0.3s;
-}
-
-.heart-icon:hover {
-  color: #ee1c47;
-}
-
-.rating i {
-  color: #ff8c00;
-  font-size: 18px;
-  margin-right: 2px;
-}
-
-.rating-number {
-  color: #333;
-  font-weight: bold;
-  font-size: 15px;
-  margin-left: 5px;
-}
-
-.divider {
-  color: #888;
-  margin: 0 6px;
-}
-
-.rating a {
-  color: #333;
-  font-size: 14px;
-  text-decoration: none;
-}
-
-.price h4 {
-  color: #111;
-  font-size: 16px;
-  text-transform: capitalize;
-  font-weight: 500;
-  margin-bottom: 4px;
-  transition: all 0.42s ease;
-}
-
-.price small {
-  display: block;
-  color: #888;
-  font-size: 13px;
-  font-weight: 400;
-  margin-bottom: 8px;
-}
-
-.price small span {
-  color: #6f42c1;
-  font-weight: 500;
-}
-
-.price p {
-  color: #151515;
-  font-size: 14px;
-  font-weight: 600;
-  margin: 5px 0;
-  transition: all 0.42s ease;
-}
-
-.price:hover h4,
-.price:hover small,
-.price:hover span,
-.price:hover p {
-  color: #0085bd;
-}
-
-.price small,
-.price span {
-  transition: all 0.42s ease;
-}
-
-.add-to-cart-button-container button {
-  cursor: pointer;
-  background-color: #0085bd;
-  color: #ffff;
-  font-weight: 500;
-  font-size: 13px;
+.activation-form-section {
+  max-width: 500px;
+  width: 100%;
+  background-color: #f9f9f9;
+  padding: 30px;
   border-radius: 10px;
-  padding: 8px 10px;
-  border: none;
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.add-to-cart-button-container button:hover {
-    background-color: #004867;
-}
-
-.add-to-cart-button-container button:active {
-  transform: scale(0.8);
-}
-
-.center-text h2 {
-  color: #111;
-  font-size: 28px;
-  text-transform: capitalize;
-  text-align: left;
-  margin-bottom: 30px;
-  margin-top: 30px;
-}
-
-.center-text h2 span {
-  text-transform: none;
-}
-
-.center-text span {
+.activation-form-section h2 {
+  font-size: 24px;
   color: #0085bd;
+  margin-bottom: 15px;
 }
 
-.center-text .category-section-links {
-  color: #111;
+.activation-form-section p {
   font-size: 14px;
-  text-transform: capitalize;
-  justify-content: right;
-  transition: all 0.42s ease;
+  color: #565656;
+  margin-bottom: 20px;
 }
 
-.add-product-row {
-    border: 2px dashed #0085bd; /* Dashed border */
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-    position: relative; /* Ensure the + sign is centered */
-    transition: all 0.4s;
+.activation-form label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+  text-align: left;
 }
 
-.add-product-row:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.activation-form input[type="text"],
+.activation-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
 }
 
-.add-product-placeholder {
-    width: 200px; /* Same as product image */
-    height: 200px; /* Same as product image */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px; /* Adjust size as needed */
-    color: #0085bd; /* Color for the + sign */
-    border-radius: 8px;
-    background-color: #f0f8ff; /* Light background */
-    cursor: pointer; /* Indicate clickable */
-    transition: transform 0.3s ease;
+.activation-form input[type="text"]:focus,
+.activation-form input[type="password"]:focus {
+  border-color: #0085bd;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 133, 189, 0.2);
 }
 
-.add-product-placeholder:hover {
-    transform: scale(1.05);
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0085bd;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.add-product-row .product-text h5 {
-    background-color: #0085bd;
+.submit-button:hover {
+  background-color: #006b9e;
 }
 
 .contact {
