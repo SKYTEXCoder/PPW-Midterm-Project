@@ -1,5 +1,8 @@
 <?php
-
+include "database/database.php";
+include "database/connect.php";
+session_start();
+$name = $_SESSION['name'];
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ShopEasily™ - Search For Products">
     <title>ShopEasily™ - Product Search Results</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/search_results.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
