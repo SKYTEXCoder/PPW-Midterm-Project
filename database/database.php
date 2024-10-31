@@ -36,10 +36,19 @@
         }
     }
 
-    function all_table($conn, $table){
-        $sql = "SELECT * FROM $table ORDER BY idProduk ASC";
-        $result = $conn->query($sql);
-        
+    function all_table($conn, $table, $search_term = ""){
+        $sql = "SELECT * FROM $table";
+        if (!empty($search_term)) {
+            $sql .= " WHERE namaProduk LIKE ?";
+            $search_term = "%" . $search_term . "%";
+        }
+        $sql .= " ORDER BY idProduk ASC";
+        $stmt = $conn->prepare($sql);
+        if (!empty($search_term)) {
+            $stmt->bind_param("s", $search_term);
+        }
+        $stmt->execute();
+        $result = $stmt->get_result();
         if ($result && $result->num_rows > 0) {
             return $result->fetch_all(MYSQLI_ASSOC);
         } else {

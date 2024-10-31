@@ -1,9 +1,10 @@
 <?php
-include "database/database.php";
-include "database/connect.php";
-
-session_start();
-$name = $_SESSION['name'];
+    include "database/database.php";
+    include "database/connect.php";
+    session_start();
+    if (isset($_SESSION['name'])) {
+        $name = $_SESSION['name'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +77,7 @@ $name = $_SESSION['name'];
         <div class="nav-icon">
             <div class="box">
                 <form action="search_results.php" class="search-for-products" method="POST">
-                    <input type="text" placeholder="Cari Produk di ShopEasily™.....">
+                    <input class="products-search-input" name="products-search-input" placeholder="Cari Produk di ShopEasily™....." autocorrect="off" autocapitalize="off" autocomplete="off" required>
                     <button type="submit" class="search-icon-container-submit">
                         <i class="bx bx-search">
 

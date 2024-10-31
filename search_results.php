@@ -1,8 +1,15 @@
 <?php
-include "database/database.php";
-include "database/connect.php";
-session_start();
-$name = $_SESSION['name'];
+    include "database/database.php";
+    include "database/connect.php";
+    session_start();
+    $search_input = "";
+    if (isset($_SESSION['name'])) {
+        $name = $_SESSION['name'];
+    }
+    if (isset($_POST["products-search-input"])) {
+        $search_input = $_POST["products-search-input"];
+    }
+    $data = all_table($conn, "produk", $search_input); //get all rows and columns from the produk table (associative array) that matches the search input
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +72,7 @@ $name = $_SESSION['name'];
         <div class="nav-icon">
             <div class="box">
                 <form action="search_results.php" class="search-for-products" method="POST">
-                    <input type="text" placeholder="Cari Produk di ShopEasily™.....">
+                    <input type="text" class="products-search-input" name="products-search-input" placeholder="Cari Produk di ShopEasily™....." autocorrect="off" autocapitalize="off" autocomplete="off" required>
                     <button type="submit" class="search-icon-container-submit">
                         <i class="bx bx-search">
 
@@ -98,6 +105,60 @@ $name = $_SESSION['name'];
                 </a><?php } ?>
         </div>
     </header>
+    <section class="all-products" id="allproducts">
+        <div class="center-text">
+            <h2 <?php if (!isset($_SESSION['name'])) {echo 'style="margin-top: 30px;"';}?>>
+                <?php if (!empty($search_input)) {echo "Hasil Pencarian Produk Untuk ";} else {echo "Semua ";}?>
+                <span>
+                    <?php if (!empty($search_input)) {?>
+                        "<?php echo $search_input?>"
+                    <?php } else {?>
+                        Produk
+                <?php } ?>
+                </span>
+            </h2>
+        </div>
+        <div class="products">
+            <?php foreach ($data as $row) { ?>
+                <div class="row">
+                    <a href="product_details.php" class="product-details-link">
+                        <div class="product-listing-image-container">
+                            <img src="assets/upload/<?php echo $row['fotoProduk']; ?>" alt="gambar-produk-1">
+                        </div>
+                    </a>
+                    <div class="product-text">
+                        <h5>For Sale</h5>
+                    </div>
+                    <div class="heart-icon">
+                        <i class="bx bx-heart">
+                                
+                        </i>
+                    </div>
+                    <div class="rating">
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star-half"></i>
+                        <span class="rating-number">4.9</span>
+                        <span class="divider">|</span>
+                        <a href="product_details.php">20,534 ratings</a>
+                    </div>
+                    <a href="product_details.php" class="product-details-link">
+                        <div class="price">
+                            <h4><?php echo $row['namaProduk']; ?></h4>
+                            <small>by <span><?php echo $row['namaPenjual']; ?></span></small>
+                            <p><?php echo "Rp" , number_format($row['hargaProduk']); ?></p>
+                        </div>
+                    </a>
+                    <div class="add-to-cart-button-container">
+                        <button type="submit" class="add-to-cart-btn">
+                            Masukkan Ke Keranjang
+                        </button>
+                    </div>
+                </div><?php } ?>
+            </div>
+    </section>
     <footer>
         <section class="contact">
             <div class="contact-info">

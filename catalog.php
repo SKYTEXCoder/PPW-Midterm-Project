@@ -2,7 +2,9 @@
     session_start();
     include "database/database.php";
     include "database/connect.php";
-    $name = $_SESSION['name'];
+    if (isset($_SESSION['name'])) {
+        $name = $_SESSION['name'];
+    }
     $data = all_table($conn, "produk"); //get all rows and columns from the produk table (associative array)
     $categoriesUniqueColumnData = get_unique_column($conn, "produk", "kategoriProduk"); //(one-dimensional array)
 ?>
@@ -67,7 +69,7 @@
         <div class="nav-icon">
             <div class="box">
                 <form action="search_results.php" class="search-for-products" method="POST">
-                    <input type="text" placeholder="Cari Produk di ShopEasily™.....">
+                    <input class="products-search-input" name="products-search-input" placeholder="Cari Produk di ShopEasily™....." autocorrect="off" autocapitalize="off" autocomplete="off" required>
                     <button type="submit" class="search-icon-container-submit">
                         <i class="bx bx-search">
 
