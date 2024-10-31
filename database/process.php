@@ -1,8 +1,8 @@
 <?php
+    session_start();
     include "database.php";
     include "connect.php";
     require_once '../vendor/autoload.php';
-    session_start();
 
     // init configuration
     $clientID = '993792713349-vd5686tuo4si2dkfrrhvp5i489mc9mp2.apps.googleusercontent.com';
@@ -119,7 +119,7 @@
                 $store_name = $_POST['store_name'];
                 $userDetails = get_user_details($conn, $userId);
                 if ($password != $userDetails['password']) {
-                    header('Location: aktivasiFiturPenjual.php');
+                    header("Location: ../aktivasiFiturPenjual.php");
                     exit();
                 } else {
                     $sql = "UPDATE user SET namaToko = ?, idRole = 1 WHERE idUser = ?";
@@ -131,7 +131,7 @@
                             echo "Error executing statement: (" . $stmt->errno . ") " . $stmt->error;
                         }
                         else {
-                            header("Location: seller.php");
+                            header("Location: ../seller.php");
                         }
                     } else {
                         echo "Error preparing statement: (" . $conn->errno . ") " . $conn->error;

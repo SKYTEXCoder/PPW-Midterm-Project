@@ -50,13 +50,13 @@
         <section class="activation-form-section">
             <h2>Aktifkan Fitur Seller di <br>Akun ShopEasily™-mu</h2>
             <p>Isi formulir berikut ini untuk mengaktifkan akun ShopEasily™ Seller-mu.</p>
-            <form action="process.php" method="POST" class="activation-form">
+            <form action="database/process.php" method="POST" class="activation-form">
                 <input type="hidden" class="condition" id="account_username" name="condition" value="aktivasi" autocorrect="off" autocapitalize="off" autocomplete="off" required>
                 <input type="hidden" class="userId" id="userId" name="userId" value="<?php echo $userId; ?>" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                <label for="store-name">Nama Toko</label>
-                <input type="text" id="store_name" name="store_name" required placeholder="Masukkan Nama Toko Anda">
+                <label for="store_name">Nama Toko</label>
+                <input type="text" id="store_name" name="store_name" autocorrect="off" autocapitalize="off" autocomplete="off" required placeholder="Masukkan Nama Toko Anda">
                 <label for="password">Password Akun</label>
-                <input type="password" id="password" name="password" required placeholder="Masukkan Password Anda">
+                <input type="password" id="password" name="password" autocorrect="off" autocapitalize="off" autocomplete="off" required placeholder="Masukkan Password Anda">
                 <button type="submit" class="submit-button">Aktifkan Fitur Seller</button>
             </form>
         </section>
