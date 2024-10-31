@@ -109,4 +109,16 @@
             return [];
         }
     }
+    function get_product_details($conn, $productId) {
+        $sql = "SELECT * FROM produk WHERE idProduk = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $productId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result && $result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return [];
+        }
+    }
 ?>

@@ -1,5 +1,16 @@
 <?php
+    $productId = $_POST['$productId'];
+    include "database/database.php";
+    include "database/connect.php";
+    session_start();
+    if (isset($_SESSION['userId'])) {
+        $userId = $_SESSION['userId'];
+        $userDetails = get_user_details($conn, $userId);
+    }
+    else {
 
+    }
+    $productDetails = get_product_details($conn, $productId);
 ?>
 
 <!DOCTYPE html>
