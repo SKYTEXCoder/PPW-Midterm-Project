@@ -122,22 +122,32 @@
                     header("Location: ../aktivasiFiturPenjual.php");
                     exit();
                 } else {
-                    $sql = "UPDATE user SET namaToko = ?, idRole = 1 WHERE idUser = ?";
-                    $stmt = $conn->prepare($sql);
-                
-                    if ($stmt) {
-                        $stmt->bind_param("si", $store_name, $userId);
-                        if (!$stmt->execute()) {
-                            echo "Error executing statement: (" . $stmt->errno . ") " . $stmt->error;
-                        }
-                        else {
-                            header("Location: ../seller.php");
-                        }
+                    $checkStoreSql = "SELECT COUNT(*) as count FROM user WHERE namaToko = ?";
+                    $checkStmt = $conn->prepare($checkStoreSql);
+                    $checkStmt->bind_param("s", $store_name);
+                    $checkStmt->execute();
+                    $checkResult = $checkStmt->get_result();
+                    $row = $checkResult->fetch_assoc();
+                    if ($row['count'] > 0) {
+                        echo "ERROR: Nama toko '$store_name' sudah diambil oleh user lain. Mohon untuk memilih nama toko lain yang unik";
                     } else {
-                        echo "Error preparing statement: (" . $conn->errno . ") " . $conn->error;
+                        $sql = "UPDATE user SET namaToko = ?, idRole = 1 WHERE idUser = ?";
+                        $stmt = $conn->prepare($sql);
+                        if ($stmt) {
+                            $stmt->bind_param("si", $store_name, $userId);
+                            if (!$stmt->execute()) {
+                                echo "Error executing statement: (" . $stmt->errno . ") " . $stmt->error;
+                            }
+                            else {
+                                header("Location: ../seller.php");
+                            }
+                        } else {
+                            echo "Error preparing statement: (" . $conn->errno . ") " . $conn->error;
+                        }
                     }
+                    $checkStmt->close();
                 }
-                
+                break;
         }
     }
 ?>
