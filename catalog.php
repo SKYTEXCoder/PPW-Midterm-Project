@@ -3,7 +3,8 @@
     include "database/database.php";
     include "database/connect.php";
     $name = $_SESSION['name'];
-    $data = all_table($conn, "produk");
+    $data = all_table($conn, "produk"); //get all rows and columns from the produk table (associative array)
+    $categoriesUniqueColumnData = get_unique_column($conn, "produk", "kategoriProduk"); //(one-dimensional array)
 ?>
 
 <!DOCTYPE html>
@@ -102,6 +103,11 @@
     <section class="all-products" id="allproducts">
         <div class="center-text">
             <h2 <?php if (!isset($_SESSION['name'])) {echo 'style="margin-top: -25px;"';} ?>>Semua <span>Produk</span></h2>
+            <?php foreach ($categoriesUniqueColumnData as $category) { ?>
+                <a href="#<?php echo strtolower($category); ?>-products" class="category-section-links">
+                    <?php echo htmlspecialchars($category, ENT_QUOTES, 'UTF-8'); ?>
+                </a>
+            <?php }?>
         </div>
         <div class="products">
             <?php foreach ($data as $row) { ?>
@@ -132,7 +138,7 @@
                     <a href="product_details.php" class="product-details-link">
                         <div class="price">
                             <h4><?php echo $row['namaProduk']; ?></h4>
-                            <small>by <span><?php echo $row['namaPenjual'] ?></span></small>
+                            <small>by <span><?php echo $row['namaPenjual']; ?></span></small>
                             <p><?php echo "Rp" , number_format($row['hargaProduk']); ?></p>
                         </div>
                     </a>
@@ -144,6 +150,54 @@
                 </div><?php } ?>
             </div>
     </section>
+    <?php foreach ($categoriesUniqueColumnData as $category) { ?>
+        <section class="<?php echo strtolower($category);?>-products" id="<?php echo strtolower($category);?>-products">
+            <div class="center-text">
+                <h2>Produk <span><?php echo $category?></span></h2>
+            </div>
+            <div class="products">
+                <?php foreach (get_items_by_category($conn, $category) as $row) { ?>
+                    <div class="row">
+                        <a href="product_details.php" class="product-details-link">
+                            <div class="product-listing-image-container">
+                                <img src="assets/upload/<?php echo $row['fotoProduk']; ?>" alt="gambar-produk-1">
+                            </div>
+                        </a>
+                        <div class="product-text">
+                            <h5>For Sale</h5>
+                        </div>
+                        <div class="heart-icon">
+                            <i class="bx bx-heart">
+                                
+                            </i>
+                        </div>
+                        <div class="rating">
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star"></i>
+                            <i class="bx bxs-star-half"></i>
+                            <span class="rating-number">4.9</span>
+                            <span class="divider">|</span>
+                            <a href="product_details.php">20,534 ratings</a>
+                        </div>
+                        <a href="product_details.php" class="product-details-link">
+                            <div class="price">
+                                <h4><?php echo $row['namaProduk']; ?></h4>
+                                <small>by <span><?php echo $row['namaPenjual']; ?></span></small>
+                                <p><?php echo "Rp" , number_format($row['hargaProduk']); ?></p>
+                            </div>
+                        </a>
+                        <div class="add-to-cart-button-container">
+                            <button type="submit" class="add-to-cart-btn">
+                                Masukkan Ke Keranjang
+                            </button>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </section>
+    <?php }?>
     <footer>
         <section class="contact">
             <div class="contact-info">

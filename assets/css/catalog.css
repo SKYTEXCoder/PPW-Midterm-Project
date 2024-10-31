@@ -187,6 +187,18 @@ section {
   color: #0085bd;
 }
 
+.center-text .category-section-links {
+  color: #111;
+  font-size: 14px;
+  text-transform: capitalize;
+  justify-content: right;
+  transition: all 0.42s ease;
+}
+
+.category-section-links:hover {
+  color: #0085bd;
+}
+
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, auto));
