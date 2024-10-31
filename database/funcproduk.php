@@ -68,7 +68,27 @@
                 $stmt->close();
                 break;
             case "update":
-                
+                $idProdukUpdate = $_POST["idProdukUpdate"];
+                $namaProdukUpdate = $_POST["namaProdukUpdate"];
+                $deskripsiProdukUpdate = $_POST["deskripsiProdukUpdate"];
+                $hargaProdukUpdate = $_POST["hargaProdukUpdate"];
+                $quantityProdukUpdate = $_POST["quantityProdukUpdate"];
+                $sql = "UPDATE produk SET namaProduk = ?, descProduk = ?, hargaProduk = ?, quantity = ? WHERE idProduk = ?";
+                $stmt = $conn->prepare($sql);
+                if ($stmt) {
+                    $stmt->bind_param("ssssi", $namaProdukUpdate, $deskripsiProdukUpdate, $hargaProdukUpdate, $quantityProdukUpdate, $idProdukUpdate);
+                    if (!$stmt->execute()) {
+                        echo "Error executing statement: (" . $stmt->errno . ") " . $stmt->error;
+                    }
+                    else {
+                        header("Location: ../seller.php");
+                        exit();
+                    }
+                } else {
+                    echo "Error preparing statement: (" . $conn->errno . ") " . $conn->error;
+                }
+                $stmt->close();
+                break;
         }
     }
 ?>
