@@ -1,4 +1,5 @@
 <?php
+    include "database.php";
     include "connect.php";
     require_once '../vendor/autoload.php';
     session_start();
@@ -112,6 +113,31 @@
                 session_destroy();
                 header('Location: ../login.php');
                 break;
+            case 'aktivasi':
+                $userId = $_POST['userId'];
+                $password = $_POST['password'];
+                $store_name = $_POST['store_name'];
+                $userDetails = get_user_details($conn, $userId);
+                if ($password != $userDetails['password']) {
+                    header('Location: aktivasiFiturPenjual.php');
+                    exit();
+                } else {
+                    $sql = "UPDATE user SET namaToko = ?, idRole = 1 WHERE idUser = ?";
+                    $stmt = $conn->prepare($sql);
+                
+                    if ($stmt) {
+                        $stmt->bind_param("si", $store_name, $userId);
+                        if (!$stmt->execute()) {
+                            echo "Error executing statement: (" . $stmt->errno . ") " . $stmt->error;
+                        }
+                        else {
+                            header("Location: seller.php");
+                        }
+                    } else {
+                        echo "Error preparing statement: (" . $conn->errno . ") " . $conn->error;
+                    }
+                }
+                
         }
     }
 ?>
