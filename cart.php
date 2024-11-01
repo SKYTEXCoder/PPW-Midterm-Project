@@ -1,10 +1,19 @@
 <?php
-include "database/database.php";
-include "database/connect.php";
-session_start();
-if (isset($_SESSION['userId'])) {
-    $name = $_SESSION['userId'];
-}
+    include "database/database.php";
+    include "database/connect.php";
+    session_start();
+    if (isset($_SESSION['userId'])) {
+        $userId = $_SESSION['userId'];
+        $userDetails = get_user_details($conn, $userId);
+    }
+    else {
+        header("Location: login.php");
+    }
+    $totalbarang = 0;
+    $totalharga = 0;
+    $data = get_cart_details($conn, $userId);
+    $jumlahcart = count($data);
+
 ?>
 
 <!DOCTYPE html>
@@ -122,138 +131,41 @@ if (isset($_SESSION['userId'])) {
             <div class="container">
                 <h5 class="section-title">Keranjang Belanja</h5>
                 <div class="cart-items">
-                    <div class="cart-item">
-                        <a href="product_details.php">
-                            <div class="item-image">
-                                <img src="assets/upload/Produk_4.jpg" alt="cart1">
-                            </div>
-                        </a>
-                        <div class="item-details">
-                            <a class="item-details-product-link" href="product_details.php">
-                                <h5>Airpods Pro 2nd Generation</h5>
-                                <small>by <span>skytexponent</span></small>
-                                <div class="rating">
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star-half"></i>
-                                    <span class="rating-number">4.9</span>
-                                    <span class="divider">|</span>
-                                    <a href="product_details.php">20,534 ratings</a>
+                    <?php foreach ($data as $row) { ?>
+                        <div class="cart-item">
+                            <a href="product_details.php">
+                                <div class="item-image">
+                                    <img src="assets/upload/Produk_4.jpg" alt="cart1">
                                 </div>
                             </a>
-                            <div class="quantity">
-                                <button class="qty-up"><i class='bx bx-plus'></i></button>
-                                <input type="text" class="qty-input" value="1" disabled>
-                                <button class="qty-down"><i class='bx bx-minus'></i></button>
-                                <button class="delete"><i class='bx bxs-trash'></i></button>
-                                <button class="save"><i class='bx bx-heart'></i></button>
-                            </div>
-                        </div>
-                        <div class="item-price">
-                            <span>Rp3.000.000,00</span>
-                        </div>
-                    </div>
-                    <div class="cart-item">
-                        <a href="product_details.php">
-                            <div class="item-image">
-                                <img src="assets/upload/Produk_5.jpg" alt="cart1">
-                            </div>
-                        </a>
-                        <div class="item-details">
-                            <a class="item-details-product-link" href="product_details.php">
-                                <h5>Anker Soundcore P20i TWS Earbuds</h5>
-                                <small>by <span>saegonexpo</span></small>
-                                <div class="rating">
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star-half"></i>
-                                    <span class="rating-number">4.9</span>
-                                    <span class="divider">|</span>
-                                    <a href="product_details.php">20,534 ratings</a>
+                            <div class="item-details">
+                                <a class="item-details-product-link" href="product_details.php">
+                                    <h5>Airpods Pro 2nd Generation</h5>
+                                    <small>by <span>skytexponent</span></small>
+                                    <div class="rating">
+                                        <i class="bx bxs-star"></i>
+                                        <i class="bx bxs-star"></i>
+                                        <i class="bx bxs-star"></i>
+                                        <i class="bx bxs-star"></i>
+                                        <i class="bx bxs-star-half"></i>
+                                        <span class="rating-number">4.9</span>
+                                        <span class="divider">|</span>
+                                        <a href="product_details.php">20,534 ratings</a>
+                                    </div>
+                                </a>
+                                <div class="quantity">
+                                    <button class="qty-up"><i class='bx bx-plus'></i></button>
+                                    <input type="text" class="qty-input" value="1" disabled>
+                                    <button class="qty-down"><i class='bx bx-minus'></i></button>
+                                    <button class="delete"><i class='bx bxs-trash'></i></button>
+                                    <button class="save"><i class='bx bx-heart'></i></button>
                                 </div>
-                            </a>
-                            <div class="quantity">
-                                <button class="qty-up"><i class='bx bx-plus'></i></button>
-                                <input type="text" class="qty-input" value="1" disabled>
-                                <button class="qty-down"><i class='bx bx-minus'></i></button>
-                                <button class="delete"><i class='bx bxs-trash'></i></button>
-                                <button class="save"><i class='bx bx-heart'></i></button>
+                            </div>
+                            <div class="item-price">
+                                <span>Rp3.000.000,00</span>
                             </div>
                         </div>
-                        <div class="item-price">
-                            <span>Rp3.000.000,00</span>
-                        </div>
-                    </div>
-                    <div class="cart-item">
-                        <a href="product_details.php">
-                            <div class="item-image">
-                                <img src="assets/upload/Produk_6.jpg" alt="cart1">
-                            </div>
-                        </a>
-                        <div class="item-details">
-                            <a class="item-details-product-link" href="product_details.php">
-                                <h5>Kursi Gaming Autofull Coklat</h5>
-                                <small>by <span>tokodebestbest</span></small>
-                                <div class="rating">
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star-half"></i>
-                                    <span class="rating-number">4.9</span>
-                                    <span class="divider">|</span>
-                                    <a href="product_details.php">20,534 ratings</a>
-                                </div>
-                            </a>
-                            <div class="quantity">
-                                <button class="qty-up"><i class='bx bx-plus'></i></button>
-                                <input type="text" class="qty-input" value="1" disabled>
-                                <button class="qty-down"><i class='bx bx-minus'></i></button>
-                                <button class="delete"><i class='bx bxs-trash'></i></button>
-                                <button class="save"><i class='bx bx-heart'></i></button>
-                            </div>
-                        </div>
-                        <div class="item-price">
-                            <span>Rp3.000.000,00</span>
-                        </div>
-                    </div>
-                    <div class="cart-item">
-                        <a href="product_details.php">
-                            <div class="item-image">
-                                <img src="assets/upload/Produk_7.jpg" alt="cart1">
-                            </div>
-                        </a>
-                        <div class="item-details">
-                            <a class="item-details-product-link" href="product_details.php">
-                                <h5>Razer BlackShark V2X Gaming Headset</h5>
-                                <small>by <span>distributorkomputer</span></small>
-                                <div class="rating">
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star"></i>
-                                    <i class="bx bxs-star-half"></i>
-                                    <span class="rating-number">4.9</span>
-                                    <span class="divider">|</span>
-                                    <a href="product_details.php">20,534 ratings</a>
-                                </div>
-                            </a>
-                            <div class="quantity">
-                                <button class="qty-up"><i class='bx bx-plus'></i></button>
-                                <input type="text" class="qty-input" value="1" disabled>
-                                <button class="qty-down"><i class='bx bx-minus'></i></button>
-                                <button class="delete"><i class='bx bxs-trash'></i></button>
-                                <button class="save"><i class='bx bx-heart'></i></button>
-                            </div>
-                        </div>
-                        <div class="item-price">
-                            <span>Rp3.000.000,00</span>
-                        </div>
-                    </div>
+                    <?php } ?>
                     <div class="subtotal">
                         <h6>Orderan kamu READY untuk dicheckout!</h6>
                         <div class="subtotal-details">

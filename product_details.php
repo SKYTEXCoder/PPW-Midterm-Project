@@ -1,10 +1,11 @@
 <?php
-
 include "database/database.php";
 include "database/connect.php";
 session_start();
-if (isset($_GET['$idProdukValue'])) {
-    $idProdukValue = $_GET['$idProdukValue'];
+$idProdukValue = $_GET['idProdukValue'] ?? null;
+if ($idProdukValue === null) {
+    header("Location: index.php");
+    exit();
 }
 if (isset($_SESSION['userId'])) {
     $userId = $_SESSION['userId'];
@@ -13,6 +14,8 @@ if (isset($_SESSION['userId'])) {
 
 }
 $productDetails = get_product_details($conn, $idProdukValue);
+$productDetailsSameShop = get_products_by_shopname($conn, $productDetails["namaPenjual"]);
+$productDetailsSameCategory = get_items_by_category($conn, $productDetails["kategoriProduk"]);
 ?>
 
 <!DOCTYPE html>
@@ -126,42 +129,26 @@ $productDetails = get_product_details($conn, $idProdukValue);
     </header>
     <section class="product">
         <div class="navigation">
-            <p><a href="#">Home</a> > Iphone 11</p>
+            <p><a href="#">Detail Produk</a> > "<?php echo $productDetails['namaProduk']?>"</p>
         </div>
         <div class="product-box">
             <div class="wrapper">
                 <div class="product-image">
-                    <img src="assets/branding/iphone_11.jpg" alt="" />
-                    <div class="another-pov">
-                        <img src="assets/branding/varian.png" alt="" />
-                        <img src="assets/branding/depan.png" alt="" />
-                        <img src="assets/branding/ads.png" alt="" />
-                    </div>
+                    <img src="assets/upload/<?php echo $productDetails['fotoProduk']?>" alt="" />
                 </div>
                 <div class="shop-name">
                     <img src="assets/branding/shop.png" alt="" />
                     <div class="shop-desc">
-                        <h4>Toko Orafon</h4>
-                        <p>Toko menjual <br />barang elektronik</p>
+                        <h4>Toko <?php echo $productDetails['namaPenjual']?></h4>
                     </div>
                 </div>
             </div>
             <div class="wrap">
                 <div class="desc">
-                    <h2>Iphone 11</h2>
+                    <h2><?php echo $productDetails['namaProduk']?></h2>
                     <br>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi
-                        sit dicta sed repudiandae. Tempore culpa omnis hic nemo nobis
-                        aperiam, eius ipsam, ad, ex placeat accusamus autem maiores
-                        incidunt. Blanditiis. Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Facilis necessitatibus voluptate sunt ex illo
-                        odit fuga ratione, hic, nemo assumenda nisi est aliquam placeat
-                        cum eligendi voluptatum consequuntur maiores tenetur? Lorem ipsum
-                        dolor sit amet consectetur, adipisicing elit. Quasi, sequi id
-                        asperiores natus nesciunt vero nihil pariatur porro, tempore ipsam
-                        magni esse tenetur perspiciatis ea impedit ut enim quibusdam
-                        ipsum?
+                        <?php echo $productDetails['descProduk']?>
                     </p>
                 </div>
                 <div class="btn">

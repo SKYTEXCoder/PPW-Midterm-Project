@@ -252,7 +252,6 @@ section {
   flex-direction: column;
   margin-top: 40px;
   margin-left: 50px;
-  padding: 50px;
   justify-content: center;
   align-items: center;
   border-radius: 7px;
@@ -260,8 +259,8 @@ section {
 }
 
 .product-image img {
-  width: 131px;
-  height: 175px;
+  max-width: 200px;
+  height: auto;
 }
 
 .another-pov {
@@ -505,6 +504,10 @@ section {
 }
 
 p.registerNavigation {
-    margin-left: 20px;
-    margin-right: -80px;
-  }
+  margin-left: 20px;
+  margin-right: -80px;
+}
+
+section.product {
+    padding-top: 10%;
+}
