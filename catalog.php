@@ -171,7 +171,7 @@ $categoriesUniqueColumnData = get_unique_column($conn, "produk", "kategoriProduk
                                 value="<?php echo $row["idProduk"] ?>" autocorrect="off" autocapitalize="off"
                                 autocomplete="off" required>
                             <input type="hidden" class="amount" name="amount" value="1" autocorrect="off"
-                                autocapitalize="off" autocomplete="off" required disabled>
+                                autocapitalize="off" autocomplete="off" required>
                             <input type="hidden" class="condition" name="condition" value="addToCart" autocorrect="off"
                                 autocapitalize="off" autocomplete="off" required>
                             <button type="submit" class="add-to-cart-btn">

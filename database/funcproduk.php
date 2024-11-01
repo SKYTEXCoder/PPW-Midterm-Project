@@ -99,13 +99,80 @@ if (isset($_POST['condition'])) {
                 $sqlcheck = "SELECT * FROM cart WHERE idUser = '$userId' AND idProduk = '$productId'";
                 $result = mysqli_query($conn, $sqlcheck);
                 if (mysqli_num_rows($result) > 0) {
-                    $sql = "UPDATE cart SET amount = amount + 1 WHERE idUser = '$userId' AND idProduk = '$productId'";
+                    if ($amount === 1) {
+                        $sql = "UPDATE cart SET amount = amount + 1 WHERE idUser = '$userId' AND idProduk = '$productId'";
+                    } else {
+                        $sql = "UPDATE cart SET amount = amount + $amount WHERE idUser = '$userId' AND idProduk = '$productId'";
+                    }
                     mysqli_query($conn, $sql);
                     header("location: ../cart.php");
                 } else {
                     $sql = "INSERT INTO cart (idUser, idProduk, amount, dateAdded) VALUES ($userId, $productId, $amount, NOW())";
                     mysqli_query($conn, $sql);
                     header("location: ../cart.php");
+                }
+            }
+            break;
+        case "setToCart":
+            if (!isset($_SESSION["userId"])) {
+                header("Location: ../login.php");
+                exit();
+            } else {
+                $userId = $_SESSION["userId"];
+                $productId = $_POST["idProdukValue"];
+                $amount = $_POST["amount"];
+                $sqlcheck = "SELECT * FROM cart WHERE idUser = '$userId' AND idProduk = '$productId'";
+                $result = mysqli_query($conn, $sqlcheck);
+                if (mysqli_num_rows($result) > 0) {
+                    if ($amount > 0) {
+                        $sql = "UPDATE cart SET amount = $amount WHERE idUser = '$userId' AND idProduk = '$productId'";
+                    } else {
+                        $sql = "DELETE FROM cart WHERE idUser = '$userId' AND idProduk = '$productId'";
+                    }
+                    mysqli_query($conn, $sql);
+                    header("location: ../cart.php");
+                } else {
+                    header("Location: ../cart.php");
+                }
+            }
+            break;
+        case "reduceFromCart":
+            if (!isset($_SESSION["userId"])) {
+                header("Location: ../login.php");
+                exit();
+            } else {
+                $userId = $_SESSION["userId"];
+                $productId = $_POST["idProdukValue"];
+                $sqlcheck = "SELECT * FROM cart WHERE idUser = '$userId' AND idProduk = '$productId'";
+                $result = mysqli_query($conn, $sqlcheck);
+                if (mysqli_num_rows($result) > 0) {
+                    if (mysqli_fetch_assoc($result)["amount"] > 1) {
+                        $sql = "UPDATE cart SET amount = amount - 1 WHERE idUser = '$userId' AND idProduk = '$productId'";
+                    } else {
+                        $sql = "DELETE FROM cart WHERE idUser = '$userId' AND idProduk = '$productId'";
+                    }
+                    mysqli_query($conn, $sql);
+                    header("location: ../cart.php");
+                } else {
+                    header("Location: ../cart.php");
+                }
+            }
+            break;
+        case "deleteFromCart":
+            if (!isset($_SESSION["userId"])) {
+                header("Location: ../login.php");
+                exit();
+            } else {
+                $userId = $_SESSION["userId"];
+                $productId = $_POST["idProdukValue"];
+                $sqlcheck = "SELECT * FROM cart WHERE idUser = '$userId' AND idProduk = '$productId'";
+                $result = mysqli_query($conn, $sqlcheck);
+                if (mysqli_num_rows($result) > 0) {
+                    $sql = "DELETE FROM cart WHERE idUser = '$userId' AND idProduk = '$productId'";
+                    mysqli_query($conn, $sql);
+                    header("location: ../cart.php");
+                } else {
+                    header("Location: ../cart.php");
                 }
             }
             break;
