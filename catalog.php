@@ -1,16 +1,17 @@
 <?php
-    session_start();
-    include "database/database.php";
-    include "database/connect.php";
-    if (isset($_SESSION['userId'])) {
-        $name = $_SESSION['userId'];
-    }
-    $data = all_table($conn, "produk"); //get all rows and columns from the produk table (associative array)
-    $categoriesUniqueColumnData = get_unique_column($conn, "produk", "kategoriProduk"); //(one-dimensional array)
+session_start();
+include "database/database.php";
+include "database/connect.php";
+if (isset($_SESSION['userId'])) {
+    $name = $_SESSION['userId'];
+}
+$data = all_table($conn, "produk"); //get all rows and columns from the produk table (associative array)
+$categoriesUniqueColumnData = get_unique_column($conn, "produk", "kategoriProduk"); //(one-dimensional array)
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
@@ -23,13 +24,18 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
     <link rel="manifest" href="assets/favicons/site.webmanifest">
     <link href='https://unpkg.com/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://db.onlinewebfonts.com/c/48656eabd3fef6464367d956315c749a?family=Electronic+Arts+Text" rel="stylesheet">
-    <link href="https://db.onlinewebfonts.com/c/cb2c6807809e3f956c87a1773338186e?family=Electronic+Arts+Text+Bold" rel="stylesheet">
-    <link href="https://db.onlinewebfonts.com/c/e770a9e3ae1a8be2089472bc6391f697?family=Electronic+Arts+Display" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/48656eabd3fef6464367d956315c749a?family=Electronic+Arts+Text"
+        rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/cb2c6807809e3f956c87a1773338186e?family=Electronic+Arts+Text+Bold"
+        rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/e770a9e3ae1a8be2089472bc6391f697?family=Electronic+Arts+Display"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <header class="header" id="header">
         <a href="index.php" class="logo">
@@ -58,18 +64,24 @@
                 </a>
             </li>-->
             <li class="sellerpageNavButton">
-                <a href="<?php if (!isset($_SESSION['userId'])) {echo "login.php";} else {echo "seller.php";} ?>">
+                <a href="<?php if (!isset($_SESSION['userId'])) {
+                    echo "login.php";
+                } else {
+                    echo "seller.php";
+                } ?>">
                     Penjual
                 </a>
             </li>
             <div class="active-tab-indicator-line">
-                
+
             </div>
         </ul>
         <div class="nav-icon">
             <div class="box">
                 <form action="search_results.php" class="search-for-products" method="POST">
-                    <input class="products-search-input" name="products-search-input" placeholder="Cari Produk di ShopEasily™....." autocorrect="off" autocapitalize="off" autocomplete="off" required>
+                    <input class="products-search-input" name="products-search-input"
+                        placeholder="Cari Produk di ShopEasily™....." autocorrect="off" autocapitalize="off"
+                        autocomplete="off" required>
                     <button type="submit" class="search-icon-container-submit">
                         <i class="bx bx-search">
 
@@ -77,7 +89,11 @@
                     </button>
                 </form>
             </div>
-            <a href="<?php if (!isset($_SESSION['userId'])) {echo "login.php";} else {echo "cart.php";}?>" class="cartNavigation">
+            <a href="<?php if (!isset($_SESSION['userId'])) {
+                echo "login.php";
+            } else {
+                echo "cart.php";
+            } ?>" class="cartNavigation">
                 <i class="bx bx-cart">
 
                 </i>
@@ -89,10 +105,10 @@
                 <a href="register.php" class="registerNavigation">
                     <p class="registerNavigation">Register</p>
                 </a>
-                <?php } else { ?>
+            <?php } else { ?>
                 <a href="profile.php" class="profileNavigation">
                     <i class="bx bx-user">
-                    
+
                     </i>
                 </a>
                 <a href="logout.php" class="logoutNavigation">
@@ -104,15 +120,19 @@
     </header>
     <section class="all-products" id="allproducts">
         <div class="center-text">
-            <h2 <?php if (!isset($_SESSION['userId'])) {echo 'style="margin-top: -25px;"';} ?>>Semua <span>Produk</span></h2>
+            <h2 <?php if (!isset($_SESSION['userId'])) {
+                echo 'style="margin-top: -25px;"';
+            } ?>>Semua <span>Produk</span>
+            </h2>
             <?php foreach ($categoriesUniqueColumnData as $category) { ?>
                 <a href="#<?php echo strtolower($category); ?>-products" class="category-section-links">
                     <?php echo htmlspecialchars($category, ENT_QUOTES, 'UTF-8'); ?>
                 </a>
-            <?php }?>
+            <?php } ?>
         </div>
         <div class="products">
             <?php foreach ($data as $row) { ?>
+                <?php $idProdukValue = $row["idProduk"]?>
                 <div class="row">
                     <a href="product_details.php" class="product-details-link">
                         <div class="product-listing-image-container">
@@ -124,7 +144,7 @@
                     </div>
                     <div class="heart-icon">
                         <i class="bx bx-heart">
-                                
+
                         </i>
                     </div>
                     <div class="rating">
@@ -141,26 +161,34 @@
                         <div class="price">
                             <h4><?php echo $row['namaProduk']; ?></h4>
                             <small>by <span><?php echo $row['namaPenjual']; ?></span></small>
-                            <p><?php echo "Rp" , number_format($row['hargaProduk']); ?></p>
+                            <p><?php echo "Rp", number_format($row['hargaProduk']); ?></p>
                         </div>
                     </a>
                     <div class="add-to-cart-button-container">
-                        <button type="submit" class="add-to-cart-btn">
-                            Masukkan Ke Keranjang
-                        </button>
+                        <form action="database/funcproduk.php" method="post" class="add-to-cart-btn-form-container"
+                            enctype="multipart/form-data">
+                            <input type="hidden" class="idProdukValue" name="idProdukValue"
+                                value="<?php echo $row["idProduk"] ?>" autocorrect="off" autocapitalize="off"
+                                autocomplete="off" required>
+                            <input type="hidden" class="condition" name="condition" value="addToCart" autocorrect="off"
+                                autocapitalize="off" autocomplete="off" required>
+                            <button type="submit" class="add-to-cart-btn">
+                                Masukkan Ke Keranjang
+                            </button>
+                        </form>
                     </div>
                 </div><?php } ?>
-            </div>
+        </div>
     </section>
     <?php foreach ($categoriesUniqueColumnData as $category) { ?>
-        <section class="<?php echo strtolower($category);?>-products" id="<?php echo strtolower($category);?>-products">
+        <section class="<?php echo strtolower($category); ?>-products" id="<?php echo strtolower($category); ?>-products">
             <div class="center-text">
-                <h2>Produk <span><?php echo $category?></span></h2>
+                <h2>Produk <span><?php echo $category ?></span></h2>
             </div>
             <div class="products">
                 <?php foreach (get_items_by_category($conn, $category) as $row) { ?>
                     <div class="row">
-                        <a href="product_details.php" class="product-details-link">
+                        <a href="<?php echo "product_details.php?idProdukValue=$idProdukValue" ?>" class="product-details-link">
                             <div class="product-listing-image-container">
                                 <img src="assets/upload/<?php echo $row['fotoProduk']; ?>" alt="gambar-produk-1">
                             </div>
@@ -170,7 +198,7 @@
                         </div>
                         <div class="heart-icon">
                             <i class="bx bx-heart">
-                                
+
                             </i>
                         </div>
                         <div class="rating">
@@ -181,25 +209,33 @@
                             <i class="bx bxs-star-half"></i>
                             <span class="rating-number">4.9</span>
                             <span class="divider">|</span>
-                            <a href="product_details.php">20,534 ratings</a>
+                            <a href="<?php echo "product_details.php?idProdukValue=$idProdukValue" ?>">20,534 ratings</a>
                         </div>
-                        <a href="product_details.php" class="product-details-link">
+                        <a href="<?php echo "product_details.php?idProdukValue=$idProdukValue" ?>" class="product-details-link">
                             <div class="price">
                                 <h4><?php echo $row['namaProduk']; ?></h4>
                                 <small>by <span><?php echo $row['namaPenjual']; ?></span></small>
-                                <p><?php echo "Rp" , number_format($row['hargaProduk']); ?></p>
+                                <p><?php echo "Rp", number_format($row['hargaProduk']); ?></p>
                             </div>
                         </a>
                         <div class="add-to-cart-button-container">
-                            <button type="submit" class="add-to-cart-btn">
-                                Masukkan Ke Keranjang
-                            </button>
+                            <form action="database/funcproduk.php" method="post" class="add-to-cart-btn-form-container"
+                                enctype="multipart/form-data">
+                                <input type="hidden" class="idProdukValue" name="idProdukValue"
+                                    value="<?php echo $row["idProduk"] ?>" autocorrect="off" autocapitalize="off"
+                                    autocomplete="off" required>
+                                <input type="hidden" class="condition" name="condition" value="addToCart" autocorrect="off"
+                                    autocapitalize="off" autocomplete="off" required>
+                                <button type="submit" class="add-to-cart-btn">
+                                    Masukkan Ke Keranjang
+                                </button>
+                            </form>
                         </div>
                     </div>
                 <?php } ?>
             </div>
         </section>
-    <?php }?>
+    <?php } ?>
     <footer>
         <section class="contact">
             <div class="contact-info">
@@ -243,9 +279,11 @@
                 </div>
                 <div class="fifth-info">
                     <h4>Subscribe to our newsletter</h4>
-                    <p>Dapatkan update terkini, berbagai promo, dan diskon menarik yang dikirim langsung ke email kamu.</p>
+                    <p>Dapatkan update terkini, berbagai promo, dan diskon menarik yang dikirim langsung ke email kamu.
+                    </p>
                     <p>Lorem Ipsum Dolor Sit Amet Consectetur Adispicing Elit. Eum, Debitis</p>
-                    <p>Dapatkan update terkini, berbagai promo, dan diskon menarik yang dikirim langsung ke email kamu.</p>
+                    <p>Dapatkan update terkini, berbagai promo, dan diskon menarik yang dikirim langsung ke email kamu.
+                    </p>
                 </div>
             </div>
         </section>
@@ -254,4 +292,5 @@
         </div>
     </footer>
 </body>
+
 </html>

@@ -373,6 +373,11 @@ section {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+p.registerNavigation {
+    margin-left: 20px;
+    margin-right: -80px;
+  }
+
 .add-product-placeholder {
     width: 200px; /* Same as product image */
     height: 200px; /* Same as product image */

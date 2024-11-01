@@ -175,9 +175,18 @@ header {
   opacity: 1;
 }
 
+.profileNavigation i {
+  color: #0085bd;
+}
+
 p.loginNavigation {
   margin-left: 20px;
   margin-right: 20px;
+}
+
+p.registerNavigation {
+  margin-left: 20px;
+  margin-right: -80px;
 }
 
 a.loginNavigation:hover {
@@ -193,7 +202,7 @@ section {
 }
 
 section.profile {
-    padding: 15% 5%;
+  padding: 15% 5%;
 }
 
 .box-profile {
@@ -239,8 +248,9 @@ section.profile {
   color: #028e91;
 }
 
-.info-section strong, .info-section a {
-    padding: 20px;
+.info-section strong,
+.info-section a {
+  padding: 20px;
 }
 
 .contact {

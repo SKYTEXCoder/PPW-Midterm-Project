@@ -1,10 +1,10 @@
 <?php
-    include "database/database.php";
-    include "database/connect.php";
-    session_start();
-    if (isset($_SESSION['userId'])) {
-        $name = $_SESSION['userId'];
-    }
+include "database/database.php";
+include "database/connect.php";
+session_start();
+if (isset($_SESSION['userId'])) {
+    $name = $_SESSION['userId'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +77,9 @@
         <div class="nav-icon">
             <div class="box">
                 <form action="search_results.php" class="search-for-products" method="POST">
-                    <input class="products-search-input" name="products-search-input" placeholder="Cari Produk di ShopEasily™....." autocorrect="off" autocapitalize="off" autocomplete="off" required>
+                    <input class="products-search-input" name="products-search-input"
+                        placeholder="Cari Produk di ShopEasily™....." autocorrect="off" autocapitalize="off"
+                        autocomplete="off" required>
                     <button type="submit" class="search-icon-container-submit">
                         <i class="bx bx-search">
 
@@ -89,8 +91,7 @@
                 echo "login.php";
             } else {
                 echo "cart.php";
-            } ?>"
-                class="cartNavigation">
+            } ?>" class="cartNavigation">
                 <i class="bx bx-cart">
 
                 </i>

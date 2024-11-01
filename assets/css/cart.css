@@ -192,6 +192,11 @@ a.registerNavigation:hover {
   color: #0085bd;
 }
 
+p.registerNavigation {
+  margin-left: 20px;
+  margin-right: -80px;
+}
+
 .container {
   width: 75%;
   margin: auto;

@@ -26,7 +26,7 @@
     }
 
     function get_unique_column($conn, $table, $column) {
-        $sql = "SELECT DISTINCT $column FROM $table ORDER BY $column ASC";
+        $sql = "SELECT DISTINCT $column FROM $table WHERE $column IS NOT NULL AND $column != '' ORDER BY $column ASC";
         $result = $conn->query($sql);
         
         if ($result && $result->num_rows > 0) {

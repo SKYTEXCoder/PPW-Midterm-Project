@@ -126,11 +126,17 @@ if (isset($_SESSION['userId'])) {
     <section class="profile">
         <div class="box-profile">
             <div class="info-section">
-                <p><strong>Nama Pengguna</strong> <?php echo $userDetails["username"]?> <a href="#">Ubah</a></p>
-                <p><strong>Nama Toko</strong><?php if (!$hasActivatedSeller) {echo "-";} else {echo $userDetails["namaToko"];} ?><?php if (!$hasActivatedSeller) {?><a href="seller.php">Aktifkan Fitur Seller</a><?php } else {?><a href="#">Ubah</a><?php } ?></p>
-                <p><strong>Nomor HP</strong> <?php echo $userDetails["phoneNumber"]?> <a href="#">Ubah</a></p>
-                <p><strong>Alamat Email</strong> <?php echo $userDetails["email"]?> <a href="#">Ubah</a></p>
-                <p><strong>Kata Sandi</strong> <?php echo $userDetails["password"]?> <a href="#">Ubah</a></p>
+                <p><strong>Nama Pengguna</strong> <?php echo $userDetails["username"] ?> <a href="#">Ubah</a></p>
+                <p><strong>Nama
+                        Toko</strong><?php if (!$hasActivatedSeller) {
+                            echo "-";
+                        } else {
+                            echo $userDetails["namaToko"];
+                        } ?><?php if (!$hasActivatedSeller) { ?><a
+                            href="seller.php">Aktifkan Fitur Seller</a><?php } else { ?><a href="#">Ubah</a><?php } ?></p>
+                <p><strong>Nomor HP</strong> <?php echo $userDetails["phoneNumber"] ?> <a href="#">Ubah</a></p>
+                <p><strong>Alamat Email</strong> <?php echo $userDetails["email"] ?> <a href="#">Ubah</a></p>
+                <p><strong>Kata Sandi</strong> <?php echo $userDetails["password"] ?> <a href="#">Ubah</a></p>
             </div>
         </div>
     </section>

@@ -1,23 +1,23 @@
 <?php
-    include "database/database.php";
-    include "database/connect.php";
-    session_start();
-    if (isset($_SESSION['userId'])) {
-        $userId = $_SESSION['userId'];
-        $userDetails = get_user_details($conn, $userId);
-        if ($userDetails['idRole'] != 1) {
-            header("Location: aktivasiFiturPenjual.php");
-        }
+include "database/database.php";
+include "database/connect.php";
+session_start();
+if (isset($_SESSION['userId'])) {
+    $userId = $_SESSION['userId'];
+    $userDetails = get_user_details($conn, $userId);
+    if ($userDetails['idRole'] != 1) {
+        header("Location: aktivasiFiturPenjual.php");
     }
-    else {
-        header("Location: login.php");
-    }
-    $namaToko = $userDetails["namaToko"];
-    $data = get_products_by_shopname($conn, $namaToko);
+} else {
+    header("Location: login.php");
+}
+$namaToko = $userDetails["namaToko"];
+$data = get_products_by_shopname($conn, $namaToko);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
@@ -30,13 +30,18 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
     <link rel="manifest" href="assets/favicons/site.webmanifest">
     <link href='https://unpkg.com/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://db.onlinewebfonts.com/c/48656eabd3fef6464367d956315c749a?family=Electronic+Arts+Text" rel="stylesheet">
-    <link href="https://db.onlinewebfonts.com/c/cb2c6807809e3f956c87a1773338186e?family=Electronic+Arts+Text+Bold" rel="stylesheet">
-    <link href="https://db.onlinewebfonts.com/c/e770a9e3ae1a8be2089472bc6391f697?family=Electronic+Arts+Display" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/48656eabd3fef6464367d956315c749a?family=Electronic+Arts+Text"
+        rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/cb2c6807809e3f956c87a1773338186e?family=Electronic+Arts+Text+Bold"
+        rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/e770a9e3ae1a8be2089472bc6391f697?family=Electronic+Arts+Display"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <header class="header" id="header">
         <a href="index.php" class="logo">
@@ -65,18 +70,24 @@
                 </a>
             </li>-->
             <li class="sellerpageNavButton">
-                <a href="<?php if (!isset($_SESSION['userId'])) {echo "login.php";} else {echo "seller.php";} ?>">
+                <a href="<?php if (!isset($_SESSION['userId'])) {
+                    echo "login.php";
+                } else {
+                    echo "seller.php";
+                } ?>">
                     Penjual
                 </a>
             </li>
             <div class="active-tab-indicator-line">
-                
+
             </div>
         </ul>
         <div class="nav-icon">
             <div class="box">
                 <form action="search_results.php" class="search-for-products" method="POST">
-                    <input type="text" class="products-search-input" name="products-search-input" placeholder="Cari Produk di ShopEasily™....." autocorrect="off" autocapitalize="off" autocomplete="off" required>
+                    <input type="text" class="products-search-input" name="products-search-input"
+                        placeholder="Cari Produk di ShopEasily™....." autocorrect="off" autocapitalize="off"
+                        autocomplete="off" required>
                     <button type="submit" class="search-icon-container-submit">
                         <i class="bx bx-search">
 
@@ -84,7 +95,12 @@
                     </button>
                 </form>
             </div>
-            <a href="<?php if (!isset($_SESSION['userId'])) {echo "login.php";} else {echo "cart.php";}?>" class="cartNavigation">
+            <a href="<?php if (!isset($_SESSION['userId'])) {
+                echo "login.php";
+            } else {
+                echo "cart.php";
+            } ?>"
+                class="cartNavigation">
                 <i class="bx bx-cart">
 
                 </i>
@@ -96,10 +112,10 @@
                 <a href="register.php" class="registerNavigation">
                     <p class="registerNavigation">Register</p>
                 </a>
-                <?php } else { ?>
+            <?php } else { ?>
                 <a href="profile.php" class="profileNavigation">
                     <i class="bx bx-user">
-                    
+
                     </i>
                 </a>
                 <a href="logout.php" class="logoutNavigation">
@@ -107,22 +123,23 @@
 
                     </i>
                 </a>
-                <?php } ?>
+            <?php } ?>
         </div>
     </header>
     <section class="all-products" id="allproducts">
         <div class="center-text">
             <h2>
-                Kelola Semua Produk Dari Toko 
+                Kelola Semua Produk Dari Toko
                 <span>
-                    <?php echo $namaToko?>
-                </span>: 
+                    <?php echo $namaToko ?>
+                </span>:
             </h2>
         </div>
         <div class="products">
             <?php foreach ($data as $row) { ?>
+                <?php $idProdukValue = $row["idProduk"]?>
                 <div class="row">
-                    <a href="product_details.php" class="product-details-link">
+                    <a href="<?php echo "product_details.php?idProdukValue=$idProdukValue"?>" class="product-details-link">
                         <div class="product-listing-image-container">
                             <img src="assets/upload/<?php echo $row['fotoProduk']; ?>" alt="gambar-produk-1">
                         </div>
@@ -131,13 +148,18 @@
                         <h5>253 Terjual</h5>
                     </div>
                     <form action="database/funcproduk.php" method="post" class="login" enctype="multipart/form-data">
-                        <input type="hidden" class="idProdukValue" name="idProdukValue" value="<?php echo $row["idProduk"]?>" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                        <input type="hidden" class="condition" name="condition" value="delete" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                        <input type="hidden" class="namaGambarProduk" name="namaGambarProduk" value="<?php echo $row["fotoProduk"]?>" autocorrect="off" autocapitalize="off" autocomplete="off" required>
+                        <input type="hidden" class="idProdukValue" name="idProdukValue"
+                            value="<?php echo $row["idProduk"] ?>" autocorrect="off" autocapitalize="off" autocomplete="off"
+                            required>
+                        <input type="hidden" class="condition" name="condition" value="delete" autocorrect="off"
+                            autocapitalize="off" autocomplete="off" required>
+                        <input type="hidden" class="namaGambarProduk" name="namaGambarProduk"
+                            value="<?php echo $row["fotoProduk"] ?>" autocorrect="off" autocapitalize="off"
+                            autocomplete="off" required>
                         <button type="submit" class="submit-btn">
                             <div class="heart-icon">
                                 <i class="bx bxs-trash">
-                                
+
                                 </i>
                             </div>
                         </button>
@@ -150,23 +172,36 @@
                         <i class="bx bxs-star-half"></i>
                         <span class="rating-number">4.9</span>
                         <span class="divider">|</span>
-                        <a href="product_details.php">20,534 ratings</a>
+                        <a href="<?php echo "product_details.php?idProdukValue=$idProdukValue"?>">20,534 ratings</a>
                     </div>
-                    <a href="product_details.php" class="product-details-link">
+                    <a href="<?php echo "product_details.php?idProdukValue=$idProdukValue"?>" class="product-details-link">
                         <div class="price">
                             <h4><?php echo $row['namaProduk']; ?></h4>
                             <small>by <span><?php echo $row['namaPenjual']; ?></span></small>
-                            <p><?php echo "Rp" , number_format($row['hargaProduk']); ?></p>
+                            <p><?php echo "Rp", number_format($row['hargaProduk']); ?></p>
                         </div>
                     </a>
                     <div class="add-to-cart-button-container">
-                        <form action="updateProduk.php" method="post" class="form_update_produk" enctype="multipart/form-data">
-                            <input type="hidden" class="idProdukValue" name="idProdukValue" value="<?php echo $row["idProduk"]?>" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                            <input type="hidden" class="namaProduk" name="namaProduk" value="<?php echo $row["namaProduk"]?>" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                            <input type="hidden" class="namaGambarProduk" name="namaGambarProduk" value="<?php echo $row["fotoProduk"]?>" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                            <input type="hidden" class="deskripsiProdukCurrent" name="deskripsiProdukCurrent" value="<?php echo $row["descProduk"]?>" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                            <input type="hidden" class="hargaProdukCurrent" name="hargaProdukCurrent" value="<?php echo $row["hargaProduk"]?>" autocorrect="off" autocapitalize="off" autocomplete="off" required>
-                            <input type="hidden" class="quantityProdukCurrent" name="quantityProdukCurrent" value="<?php echo $row["quantity"]?>" autocorrect="off" autocapitalize="off" autocomplete="off" required>     
+                        <form action="updateProduk.php" method="post" class="form_update_produk"
+                            enctype="multipart/form-data">
+                            <input type="hidden" class="idProdukValue" name="idProdukValue"
+                                value="<?php echo $row["idProduk"] ?>" autocorrect="off" autocapitalize="off"
+                                autocomplete="off" required>
+                            <input type="hidden" class="namaProduk" name="namaProduk"
+                                value="<?php echo $row["namaProduk"] ?>" autocorrect="off" autocapitalize="off"
+                                autocomplete="off" required>
+                            <input type="hidden" class="namaGambarProduk" name="namaGambarProduk"
+                                value="<?php echo $row["fotoProduk"] ?>" autocorrect="off" autocapitalize="off"
+                                autocomplete="off" required>
+                            <input type="hidden" class="deskripsiProdukCurrent" name="deskripsiProdukCurrent"
+                                value="<?php echo $row["descProduk"] ?>" autocorrect="off" autocapitalize="off"
+                                autocomplete="off" required>
+                            <input type="hidden" class="hargaProdukCurrent" name="hargaProdukCurrent"
+                                value="<?php echo $row["hargaProduk"] ?>" autocorrect="off" autocapitalize="off"
+                                autocomplete="off" required>
+                            <input type="hidden" class="quantityProdukCurrent" name="quantityProdukCurrent"
+                                value="<?php echo $row["quantity"] ?>" autocorrect="off" autocapitalize="off"
+                                autocomplete="off" required>
                             <button type="submit" class="add-to-cart-btn">
                                 Update Detail Produk
                             </button>
@@ -237,9 +272,11 @@
                 </div>
                 <div class="fifth-info">
                     <h4>Subscribe to our newsletter</h4>
-                    <p>Dapatkan update terkini, berbagai promo, dan diskon menarik yang dikirim langsung ke email kamu.</p>
+                    <p>Dapatkan update terkini, berbagai promo, dan diskon menarik yang dikirim langsung ke email kamu.
+                    </p>
                     <p>Lorem Ipsum Dolor Sit Amet Consectetur Adispicing Elit. Eum, Debitis</p>
-                    <p>Dapatkan update terkini, berbagai promo, dan diskon menarik yang dikirim langsung ke email kamu.</p>
+                    <p>Dapatkan update terkini, berbagai promo, dan diskon menarik yang dikirim langsung ke email kamu.
+                    </p>
                 </div>
             </div>
         </section>
@@ -248,4 +285,5 @@
         </div>
     </footer>
 </body>
+
 </html>

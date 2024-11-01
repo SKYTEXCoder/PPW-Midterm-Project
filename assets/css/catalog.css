@@ -421,3 +421,8 @@ section {
   color: #111;
   text-transform: capitalize;
 }
+
+p.registerNavigation {
+  margin-left: 20px;
+  margin-right: -80px;
+}
