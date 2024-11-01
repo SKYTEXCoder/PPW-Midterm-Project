@@ -92,8 +92,7 @@ if (isset($_SESSION['userId'])) {
                 echo "login.php";
             } else {
                 echo "cart.php";
-            } ?>"
-                class="cartNavigation">
+            } ?>" class="cartNavigation">
                 <i class="bx bx-cart">
 
                 </i>
@@ -140,9 +139,9 @@ if (isset($_SESSION['userId'])) {
         </div>
         <div class="products">
             <?php foreach ($data as $row) { ?>
-                <?php $idProdukValue = $row["idProduk"]?>
+                <?php $idProdukValue = $row["idProduk"] ?>
                 <div class="row">
-                    <a href="<?php echo "product_details.php?idProdukValue=$idProdukValue"?>" class="product-details-link">
+                    <a href="<?php echo "product_details.php?idProdukValue=$idProdukValue" ?>" class="product-details-link">
                         <div class="product-listing-image-container">
                             <img src="assets/upload/<?php echo $row['fotoProduk']; ?>" alt="gambar-produk-1">
                         </div>
@@ -163,9 +162,9 @@ if (isset($_SESSION['userId'])) {
                         <i class="bx bxs-star-half"></i>
                         <span class="rating-number">4.9</span>
                         <span class="divider">|</span>
-                        <a href="<?php echo "product_details.php?idProdukValue=$idProdukValue"?>">20,534 ratings</a>
+                        <a href="<?php echo "product_details.php?idProdukValue=$idProdukValue" ?>">20,534 ratings</a>
                     </div>
-                    <a href="<?php echo "product_details.php?idProdukValue=$idProdukValue"?>" class="product-details-link">
+                    <a href="<?php echo "product_details.php?idProdukValue=$idProdukValue" ?>" class="product-details-link">
                         <div class="price">
                             <h4><?php echo $row['namaProduk']; ?></h4>
                             <small>by <span><?php echo $row['namaPenjual'] ?></span></small>
@@ -177,6 +176,9 @@ if (isset($_SESSION['userId'])) {
                             enctype="multipart/form-data">
                             <input type="hidden" class="idProdukValue" name="idProdukValue"
                                 value="<?php echo $row["idProduk"] ?>" autocorrect="off" autocapitalize="off"
+                                autocomplete="off" required>
+                            <input type="hidden" class="amount" name="amount"
+                                value="1" autocorrect="off" autocapitalize="off"
                                 autocomplete="off" required>
                             <input type="hidden" class="condition" name="condition" value="addToCart" autocorrect="off"
                                 autocapitalize="off" autocomplete="off" required>

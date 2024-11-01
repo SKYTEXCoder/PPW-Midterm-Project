@@ -13,13 +13,26 @@ function get_table($conn, $table, $column)
     }
 }
 
+function get_table_details($conn, $table, $column, $var)
+{
+    $sql = "SELECT * FROM $table WHERE $column = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $var);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result && $result->num_rows > 0) {
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        return [];
+    }
+}
+
 function get_items_by_category($conn, $category)
 {
     if (empty($category)) {
         $sql = "SELECT * FROM produk"; // No WHERE clause, so it selects all items
         $stmt = $conn->prepare($sql);
-    }
-    else {
+    } else {
         $sql = "SELECT * FROM produk WHERE kategoriProduk = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $category);

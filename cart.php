@@ -133,15 +133,15 @@
                 <div class="cart-items">
                     <?php foreach ($data as $row) { ?>
                         <div class="cart-item">
-                            <a href="product_details.php">
+                            <a href="<?php echo 'product_details.php?idProdukValue=' . $row['idProduk']; ?>">
                                 <div class="item-image">
-                                    <img src="assets/upload/Produk_4.jpg" alt="cart1">
+                                    <img src="assets/upload/<?php echo $row['fotoProduk'] ?>" alt="cart1">
                                 </div>
                             </a>
                             <div class="item-details">
-                                <a class="item-details-product-link" href="product_details.php">
-                                    <h5>Airpods Pro 2nd Generation</h5>
-                                    <small>by <span>skytexponent</span></small>
+                                <a class="item-details-product-link" href="<?php echo 'product_details.php?idProdukValue=' . $row['idProduk']; ?>">
+                                    <h5><?php echo $row["namaProduk"] ?></h5>
+                                    <small>by <span><?php echo $row["namaPenjual"] ?></span></small>
                                     <div class="rating">
                                         <i class="bx bxs-star"></i>
                                         <i class="bx bxs-star"></i>
@@ -162,16 +162,29 @@
                                 </div>
                             </div>
                             <div class="item-price">
-                                <span>Rp3.000.000,00</span>
+                                <span>Rp<?php echo number_format($row['amount'] * $row['hargaProduk'], 2, ',', '.');?></span>
                             </div>
                         </div>
-                    <?php } ?>
+                        <?php $totalbarang += $row['amount']; ?>
+                        <?php $totalharga += $row['amount'] * $row['hargaProduk'];?>
+                    <?php }?>
                     <div class="subtotal">
-                        <h6>Orderan kamu READY untuk dicheckout!</h6>
-                        <div class="subtotal-details">
-                            <h5>Total Harga (4 produk): <span>Rp12.000.000,00</span></h5>
-                            <button class="buy-btn">Check Out</button>
-                        </div>
+                        <?php if ($jumlahcart !== 0) { ?>
+                            <h6>Orderan kamu READY untuk dicheckout!</h6>
+                            <div class="subtotal-details">
+                                <h5>Total Harga (<?php echo $jumlahcart?> produk, <?php echo $totalbarang?> barang): <span>Rp<?php echo number_format($totalharga, 2, ',', '.') ?></span></h5>
+                                <button class="buy-btn">Check Out</button>
+                            </div>
+                        <?php } else {?>
+                            <h6>Keranjang Belanja Kamu Masih Kosong.</h6>
+                            <div class="subtotal-details">
+                                <h5>Silakan masukkan berbagai produk yang terdapat di katalog ShopEasily <br>ke dalam keranjang kamu terlebih dahulu.</h5>
+                                <a href="catalog.php">
+                                    <button class="buy-btn catalog-redirect">Belanja Sekarang</button>
+                                </a>
+                            </div>
+                        <?php }?>
+
                     </div>
                 </div>
             </div>

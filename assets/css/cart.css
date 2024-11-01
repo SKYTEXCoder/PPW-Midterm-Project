@@ -207,6 +207,10 @@ p.registerNavigation {
   margin-top: 10%;
 }
 
+.catalog-redirect {
+  background-color: #0085bd !important;
+}
+
 /* Cart Section */
 .cart-section {
   padding: 20px 0;

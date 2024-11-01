@@ -132,7 +132,7 @@ $categoriesUniqueColumnData = get_unique_column($conn, "produk", "kategoriProduk
         </div>
         <div class="products">
             <?php foreach ($data as $row) { ?>
-                <?php $idProdukValue = $row["idProduk"]?>
+                <?php $idProdukValue = $row["idProduk"] ?>
                 <div class="row">
                     <a href="product_details.php" class="product-details-link">
                         <div class="product-listing-image-container">
@@ -170,6 +170,8 @@ $categoriesUniqueColumnData = get_unique_column($conn, "produk", "kategoriProduk
                             <input type="hidden" class="idProdukValue" name="idProdukValue"
                                 value="<?php echo $row["idProduk"] ?>" autocorrect="off" autocapitalize="off"
                                 autocomplete="off" required>
+                            <input type="hidden" class="amount" name="amount" value="1" autocorrect="off"
+                                autocapitalize="off" autocomplete="off" required disabled>
                             <input type="hidden" class="condition" name="condition" value="addToCart" autocorrect="off"
                                 autocapitalize="off" autocomplete="off" required>
                             <button type="submit" class="add-to-cart-btn">
