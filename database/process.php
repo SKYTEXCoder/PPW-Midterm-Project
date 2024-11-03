@@ -129,7 +129,7 @@
                     $checkResult = $checkStmt->get_result();
                     $row = $checkResult->fetch_assoc();
                     if ($row['count'] > 0) {
-                        echo "ERROR: Nama toko '$store_name' sudah diambil oleh user lain. Mohon untuk memilih nama toko lain yang unik";
+                        echo "ERROR: Nama toko '$store_name' sudah diambil oleh user lain. Mohon untuk memilih nama toko lainnya yang unik";
                     } else {
                         $sql = "UPDATE user SET namaToko = ?, idRole = 1 WHERE idUser = ?";
                         $stmt = $conn->prepare($sql);

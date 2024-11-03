@@ -1,18 +1,18 @@
 <?php
-include "database/database.php";
-include "database/connect.php";
-session_start();
-if (isset($_SESSION['userId'])) {
-    $userId = $_SESSION['userId'];
-    $userDetails = get_user_details($conn, $userId);
-    if (isset($userDetails['idRole'])) {
-        if ($userDetails['idRole'] != 0) {
-            header("Location: seller.php");
+    include "database/database.php";
+    include "database/connect.php";
+    session_start();
+    if (isset($_SESSION['userId'])) {
+        $userId = $_SESSION['userId'];
+        $userDetails = get_user_details($conn, $userId);
+        if (isset($userDetails['idRole'])) {
+            if ($userDetails['idRole'] != 0) {
+                header("Location: seller.php");
+            }
         }
+    } else {
+        header("Location: login.php");
     }
-} else {
-    header("Location: login.php");
-}
 ?>
 
 <!DOCTYPE html>

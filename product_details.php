@@ -1,21 +1,21 @@
 <?php
-include "database/database.php";
-include "database/connect.php";
-session_start();
-$idProdukValue = $_GET['idProdukValue'] ?? null;
-if ($idProdukValue === null) {
-    header("Location: index.php");
-    exit();
-}
-if (isset($_SESSION['userId'])) {
-    $userId = $_SESSION['userId'];
-    $userDetails = get_user_details($conn, $userId);
-} else {
+    include "database/database.php";
+    include "database/connect.php";
+    session_start();
+    $idProdukValue = $_GET['idProdukValue'] ?? null;
+    if ($idProdukValue === null) {
+        header("Location: index.php");
+        exit();
+    }
+    if (isset($_SESSION['userId'])) {
+        $userId = $_SESSION['userId'];
+        $userDetails = get_user_details($conn, $userId);
+    } else {
 
-}
-$productDetails = get_product_details($conn, $idProdukValue);
-$productDetailsSameShop = get_products_by_shopname($conn, $productDetails["namaPenjual"]);
-$productDetailsSameCategory = get_items_by_category($conn, $productDetails["kategoriProduk"]);
+    }
+    $productDetails = get_product_details($conn, $idProdukValue);
+    $productDetailsSameShop = get_products_by_shopname($conn, $productDetails["namaPenjual"]);
+    $productDetailsSameCategory = get_items_by_category($conn, $productDetails["kategoriProduk"]);
 ?>
 
 <!DOCTYPE html>
@@ -127,77 +127,18 @@ $productDetailsSameCategory = get_items_by_category($conn, $productDetails["kate
                 </a><?php } ?>
         </div>
     </header>
-    <section class="product">
-        <div class="navigation">
-            <p><a href="#">Detail Produk</a> > "<?php echo $productDetails['namaProduk']?>"</p>
-        </div>
-        <div class="product-box">
-            <div class="wrapper">
-                <div class="product-image">
-                    <img src="assets/upload/<?php echo $productDetails['fotoProduk']?>" alt="" />
+    <section class="product-details-container">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="assets/upload/<?php echo $productDetails["fotoProduk"] ?>" alt="">
                 </div>
-                <div class="shop-name">
-                    <img src="assets/branding/shop.png" alt="" />
-                    <div class="shop-desc">
-                        <h4>Toko <?php echo $productDetails['namaPenjual']?></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="wrap">
-                <div class="desc">
-                    <h2><?php echo $productDetails['namaProduk']?></h2>
-                    <br>
-                    <p>
-                        <?php echo $productDetails['descProduk']?>
-                    </p>
-                </div>
-                <div class="btn">
-                    <div class="counter">
-                        <span class="minus">-</span>
-                        <span class="num">1</span>
-                        <span class="plus">+</span>
-                    </div>
-                    <button class="add-cart">Tambah Keranjang</button>
-                </div>
-            </div>
-        </div>
-        <div class="another-products">
-            <h2>Produk lainnya :</h2>
-            <div class="list-product">
-                <div class="product1">
-                    <img src="assets/branding/anker_soundcore_p20i_tws.jpg" alt="" />
-                    <div class="short-desc">
-                        <p class="head-sd">TWS Anker Sound core</p>
-                        <p>Rp 200.000</p>
-                    </div>
-                </div>
-                <div class="product2">
-                    <img src="assets/branding/blackshark_v2x_headset.jpg" alt="" />
-                    <div class="short-desc">
-                        <p class="head-sd">Headset Black Shark</p>
-                        <p>Rp 700.000</p>
-                    </div>
-                </div>
-                <div class="product3">
-                    <img src="assets/branding/kensington_blackbelt_rugged_case.jpg" alt="" />
-                    <div class="short-desc">
-                        <p class="head-sd">Black belt rugged case</p>
-                        <p>Rp 50.000</p>
-                    </div>
-                </div>
-                <div class="product1">
-                    <img src="assets/branding/anker_soundcore_p20i_tws.jpg" alt="" />
-                    <div class="short-desc">
-                        <p class="head-sd">TWS Anker Sound core</p>
-                        <p>Rp 200.000</p>
-                    </div>
-                </div>
-                <div class="product2">
-                    <img src="assets/branding/blackshark_v2x_headset.jpg" alt="" />
-                    <div class="short-desc">
-                        <p class="head-sd">Headset Black Shark</p>
-                        <p>Rp 700.000</p>
-                    </div>
+                <div class="col-2">
+                    <p>Detail Produk / <?php if (!empty($productDetails["kategoriProduk"])) {echo $productDetails["kategoriProduk"];} else {echo "Semua Produk";}?></p>
+                    <h1><?php echo $productDetails["namaProduk"] ?></h1>
+                    <h4>Rp<?php echo number_format($productDetails["hargaProduk"], 2, ',', '.'); ?></h4>
+                    <input type="number" value="1">
+                    <a href="" class="btn"></a>
                 </div>
             </div>
         </div>
