@@ -178,7 +178,7 @@ $data = get_products_by_shopname($conn, $namaToko);
                         <div class="price">
                             <h4><?php echo $row['namaProduk']; ?></h4>
                             <small>by <span><?php echo $row['namaPenjual']; ?></span></small>
-                            <p><?php echo "Rp", number_format($row['hargaProduk']); ?></p>
+                            <p><?php echo "Rp", number_format($row['hargaProduk'], 2, ',', '.'); ?></p>
                         </div>
                     </a>
                     <div class="add-to-cart-button-container">
