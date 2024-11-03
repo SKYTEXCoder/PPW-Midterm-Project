@@ -1,19 +1,17 @@
 <?php
-    include "database/database.php";
-    include "database/connect.php";
-    session_start();
-    if (isset($_SESSION['userId'])) {
-        $userId = $_SESSION['userId'];
-        $userDetails = get_user_details($conn, $userId);
-    }
-    else {
-        header("Location: login.php");
-    }
-    $totalbarang = 0;
-    $totalharga = 0;
-    $data = get_cart_details($conn, $userId);
-    $jumlahcart = count($data);
-
+include "database/database.php";
+include "database/connect.php";
+session_start();
+if (isset($_SESSION['userId'])) {
+    $userId = $_SESSION['userId'];
+    $userDetails = get_user_details($conn, $userId);
+} else {
+    header("Location: login.php");
+}
+$totalbarang = 0;
+$totalharga = 0;
+$data = get_cart_details($conn, $userId);
+$jumlahcart = count($data);
 ?>
 
 <!DOCTYPE html>
@@ -139,7 +137,8 @@
                                 </div>
                             </a>
                             <div class="item-details">
-                                <a class="item-details-product-link" href="<?php echo 'product_details.php?idProdukValue=' . $row['idProduk']; ?>">
+                                <a class="item-details-product-link"
+                                    href="<?php echo 'product_details.php?idProdukValue=' . $row['idProduk']; ?>">
                                     <h5><?php echo $row["namaProduk"] ?></h5>
                                     <small>by <span><?php echo $row["namaPenjual"] ?></span></small>
                                     <div class="rating">
@@ -154,36 +153,76 @@
                                     </div>
                                 </a>
                                 <div class="quantity">
-                                    <button class="qty-up"><i class='bx bx-plus'></i></button>
-                                    <input type="text" class="qty-input" value="1" disabled>
-                                    <button class="qty-down"><i class='bx bx-minus'></i></button>
-                                    <button class="delete"><i class='bx bxs-trash'></i></button>
-                                    <button class="save"><i class='bx bx-heart'></i></button>
+                                    <form action="database/funcproduk.php" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" class="condition" name="condition" value="addToCart"
+                                            autocorrect="off" autocapitalize="off" autocomplete="off" required>
+                                        <input type="hidden" class="idProdukValue" name="idProdukValue"
+                                            value="<?php echo $row["idProduk"] ?>" autocorrect="off" autocapitalize="off"
+                                            autocomplete="off" required>
+                                        <input type="hidden" class="amount" name="amount" value="1" autocorrect="off"
+                                            autocapitalize="off" autocomplete="off" required>
+                                        <button class="qty-up" type="submit"><i class='bx bx-plus'></i></button>
+                                    </form>
+                                    <form action="database/funcproduk.php" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" class="condition" name="condition" value="setToCart"
+                                            autocorrect="off" autocapitalize="off" autocomplete="off" required>
+                                        <input type="hidden" class="idProdukValue" name="idProdukValue"
+                                            value="<?php echo $row["idProduk"] ?>" autocorrect="off" autocapitalize="off"
+                                            autocomplete="off" required>
+                                        <input type="number" class="qty-input" name="amount"
+                                            value="<?php echo $row["amount"] ?>" autocorrect="off" autocapitalize="off"
+                                            autocomplete="off" required>
+                                        <button class="update-produk-amount-incart" type="submit">Update</button>
+                                    </form>
+                                    <form action="database/funcproduk.php" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" class="condition" name="condition" value="reduceFromCart"
+                                            autocorrect="off" autocapitalize="off" autocomplete="off" required>
+                                        <input type="hidden" class="idProdukValue" name="idProdukValue"
+                                            value="<?php echo $row["idProduk"] ?>" autocorrect="off" autocapitalize="off"
+                                            autocomplete="off" required>
+                                        <button class="qty-down" type="submit"><i class='bx bx-minus'></i></button>
+                                    </form>
+                                    <form action="database/funcproduk.php" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" class="condition" name="condition" value="deleteFromCart"
+                                            autocorrect="off" autocapitalize="off" autocomplete="off" required>
+                                        <input type="hidden" class="idProdukValue" name="idProdukValue"
+                                            value="<?php echo $row["idProduk"] ?>" autocorrect="off" autocapitalize="off"
+                                            autocomplete="off" required>
+                                        <button class="delete" type="submit"><i class='bx bxs-trash'></i></button>
+                                    </form>
+                                    <form action="database/funcproduk.php" method="post" enctype="multipart/form-data">
+                                        <button class="save"><i class='bx bx-heart'></i></button>
+                                    </form>
                                 </div>
                             </div>
                             <div class="item-price">
-                                <span>Rp<?php echo number_format($row['amount'] * $row['hargaProduk'], 2, ',', '.');?></span>
+                                <span class="price-per-product-incart">HARGA: Rp<?php echo number_format($row["hargaProduk"], 2, ',', '.'); ?></span>
+                                <span class="price-total-product-incart">TOTAL: Rp<?php echo number_format($row['amount'] * $row['hargaProduk'], 2, ',', '.'); ?></span>
+                                <span class="product-amount-incart">JUMLAH: <?php echo $row["amount"] ?> di keranjang</span>
                             </div>
                         </div>
                         <?php $totalbarang += $row['amount']; ?>
-                        <?php $totalharga += $row['amount'] * $row['hargaProduk'];?>
-                    <?php }?>
+                        <?php $totalharga += $row['amount'] * $row['hargaProduk']; ?>
+                    <?php } ?>
                     <div class="subtotal">
                         <?php if ($jumlahcart !== 0) { ?>
                             <h6>Orderan kamu READY untuk dicheckout!</h6>
                             <div class="subtotal-details">
-                                <h5>Total Harga (<?php echo $jumlahcart?> produk, <?php echo $totalbarang?> barang): <span>Rp<?php echo number_format($totalharga, 2, ',', '.') ?></span></h5>
+                                <h5>Total Harga (<?php echo $jumlahcart ?> produk, <?php echo $totalbarang ?> barang):
+                                    <span>Rp<?php echo number_format($totalharga, 2, ',', '.') ?></span>
+                                </h5>
                                 <button class="buy-btn">Check Out</button>
                             </div>
-                        <?php } else {?>
+                        <?php } else { ?>
                             <h6>Keranjang Belanja Kamu Masih Kosong.</h6>
                             <div class="subtotal-details">
-                                <h5>Silakan masukkan berbagai produk yang terdapat di katalog ShopEasily <br>ke dalam keranjang kamu terlebih dahulu.</h5>
+                                <h5>Silakan masukkan berbagai produk yang terdapat di katalog ShopEasily <br>ke dalam
+                                    keranjang kamu terlebih dahulu.</h5>
                                 <a href="catalog.php">
                                     <button class="buy-btn catalog-redirect">Belanja Sekarang</button>
                                 </a>
                             </div>
-                        <?php }?>
+                        <?php } ?>
 
                     </div>
                 </div>

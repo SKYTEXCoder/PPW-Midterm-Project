@@ -329,18 +329,45 @@ button {
 }
 
 .qty-input {
-  width: 40px;
+  width: 60px;
   text-align: center;
   border: 1px solid #ccc;
   padding: 5px;
   background-color: #f9f9f9;
 }
 
+.update-produk-amount-incart {
+  padding: 10px 15px;
+  background-color: #0085bd;
+  border: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.42s ease;
+}
+
 .item-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 20px;
   color: #000;
   font-weight: 600;
   padding-left: 15px;
+}
+
+.price-per-product-incart {
+  padding-top: 0 !important;
+}
+
+.item-price span {
+  padding: 10% 0;
+}
+
+.product-amount-incart {
+  padding-bottom: 0 !important;
 }
 
 /* Subtotal Section */
