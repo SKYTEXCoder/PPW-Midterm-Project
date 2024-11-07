@@ -8,9 +8,9 @@ if (!isset($_SESSION["userId"])) {
     include "database/connect.php";
     if (isset($_POST["condition"])) {
         $condition = $_POST["condition"];
+        $userId = $_SESSION["userId"];
         switch ($condition) {
             case "updateUserName":
-                $userId = $_SESSION["userId"];
                 $updatedName = $_POST["updatedName"];
                 $sql = "UPDATE user SET username = ? WHERE idUser = ?";
                 $stmt = $conn->prepare($sql);
@@ -25,7 +25,8 @@ if (!isset($_SESSION["userId"])) {
                 } else {
                     echo "Error preparing statement: (" . $conn->errno . ") " . $conn->error;
                 }
-
+                $stmt->close();
+                break;
 
             case "updateShopName":
 
