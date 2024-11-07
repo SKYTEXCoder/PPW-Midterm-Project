@@ -7,7 +7,7 @@ if (!isset($_SESSION["userId"])) {
     include "database/database.php";
     include "database/connect.php";
     $userId = $_SESSION["userId"];
-    $userData = get_user_details($conn, $userId, "namaToko, username, email, phoneNumber, password");
+    $userData = get_user_details($conn, $userId, "idRole, namaToko, username, email, phoneNumber, password");
     if (isset($_POST["condition"]) && $_POST["condition"] === "updateProfileSamePage") {
         $updatedUserName = $_POST["updatedUserName"];
         $updatedShopName = $_POST["updatedShopName"];
@@ -82,9 +82,9 @@ if (!isset($_SESSION["userId"])) {
                 <label for="updatedUserName">Nama Pengguna</label>
                 <input type="text" class="updatedUserName" id="updatedUserName" name="updatedUserName" autocorrect="off"
                     autocapitalize="off" autocomplete="off" required value="<?php echo $userData["username"] ?>">
-                <label for="updatedShopName">Nama Toko</label>
+                <?php if ($userData["idRole"] === 1) {?><label for="updatedShopName">Nama Toko</label>
                 <input type="text" class="updatedShopName" id="updatedShopName" name="updatedShopName" autocorrect="off"
-                    autocapitalize="off" autocomplete="off" required value="<?php echo $userData["namaToko"] ?>">
+                    autocapitalize="off" autocomplete="off" required value="<?php echo $userData["namaToko"] ?>"><?php } else {}?>
                 <label for="updatedPhoneNumber">Nomor HP</label>
                 <input type="text" class="updatedPhoneNumber" id="updatedPhoneNumber" name="updatedPhoneNumber"
                     autocorrect="off" autocapitalize="off" autocomplete="off" required
