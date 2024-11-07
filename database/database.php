@@ -122,9 +122,15 @@ function get_cart_details($conn, $userId)
     }
 }
 
-function get_user_details($conn, $userId)
+function get_user_details($conn, $userId, $columns = "*")
 {
-    $sql = "SELECT * FROM user WHERE idUser = ?";
+    if ($columns !== "*") {
+        $allowed_columns = ['username', 'email', 'phoneNumber', 'idUser', 'idRole', 'namaToko', 'password']; // Add all column names here
+        $columns_array = explode(",", $columns);
+        $filtered_columns = array_intersect($allowed_columns, array_map('trim', $columns_array));
+        $columns = implode(",", $filtered_columns);
+    }
+    $sql = "SELECT $columns FROM user WHERE idUser = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $userId);
     $stmt->execute();

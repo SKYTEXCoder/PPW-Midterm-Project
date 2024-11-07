@@ -1,18 +1,18 @@
 <?php
-    include "database/database.php";
-    include "database/connect.php";
-    session_start();
-    if (isset($_SESSION['userId'])) {
-        $userId = $_SESSION['userId'];
-        $userDetails = get_user_details($conn, $userId);
-        if (isset($userDetails['idRole'])) {
-            if ($userDetails['idRole'] != 0) {
-                header("Location: seller.php");
-            }
+include "database/database.php";
+include "database/connect.php";
+session_start();
+if (isset($_SESSION['userId'])) {
+    $userId = $_SESSION['userId'];
+    $userDetails = get_user_details($conn, $userId);
+    if (isset($userDetails['idRole'])) {
+        if ($userDetails['idRole'] != 0) {
+            header("Location: seller.php");
         }
-    } else {
-        header("Location: login.php");
     }
+} else {
+    header("Location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -127,14 +127,6 @@
         </div>
     </footer>
 
-
-
-
-
-
-
-
-
     <!--<nav class="top-bar">
         <a href="index.php" title="ShopEasily" target="_self">
             <img src="assets/branding/shopeasily-logo-big.png" alt="shopeasily-logo" class="logo">
@@ -159,6 +151,7 @@
             <h4>Copyright @ Kelompok 1 2024</h4>
         </div>
     </div>-->
+
 </body>
 
 </html>
